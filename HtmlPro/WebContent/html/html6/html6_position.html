@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		p, div {
+			width: 200px;
+			height: 100px;
+		}
+		
+		#ex1 {
+			background-color: aqua;
+		}
+		#ex2 {
+			background-color: yellow;
+			position: absolute;
+			left: 50px;
+			top: 30px;
+		}
+		#ex3 {
+			background-color: green;
+		}
+		#container {
+			background-color: gray;
+		}
+		
+		img {
+			width: 300px;
+			position: absolute;
+    		top: 500px;
+    		z-index: -1;
+		 }
+		 img+p {
+		 	color: yellow;
+		 }
+	</style>
+</head>
+<body>
+	<h1>position 연습</h1>
+	<p id="ex1">블럭1</p>
+	<div id="container">
+		<div id="ex2">블럭2 (position)</div>
+	</div>
+	<p id="ex3">블럭3</p>
+	
+	<hr>
+	
+	<h1>z-index 연습</h1>
+	<img src="../../images/coffee2.jpg" alt="커피">
+	<p>커피 마시고 싶은데 커피를 못 마시고 있어요.</p>
+	
+</body>
+</html>
+
+

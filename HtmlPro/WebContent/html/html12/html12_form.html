@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function checkEmpty() {
+		var ele = document.getElementById("userName");
+		if(ele.value.trim().length == 0) {
+			alert("이름이 입력되지 않았습니다.");
+			ele.focus();
+			return;
+		}
+	}
+	
+	function checkLength() {
+		var ele = document.getElementById("userId");
+		if(ele.value.length < 6 || ele.value.length > 8) {
+			alert("아이디는 6~8 글자 입니다.");
+			ele.focus();
+			return;
+		}
+	}
+	
+	function validate() {
+		//핸드폰번호 검사
+		var ele = document.getElementById("hp");
+		var regExp = /^\d{3}-?\d{3,4}-?\d{4}$/;
+		if(ele.value.match(regExp)) {
+			alert("전화번호가 정상입니다.");
+			return;
+		} else {
+			alert("전화번호가 오류입니다.");
+			ele.focus();
+			return;
+		}
+		
+		
+// 		// 빈값 체크
+// 		// 자릿수 체크
+		
+// 		var val = ~;
+// 		val = val.replaceAll("-", "");
+// 		val.length == 10 || 9
+		
+// 		try{
+// 			parseInt(val)
+// 		}catch(ex){
+// 			alert()
+// 		}
+		
+	}
+	
+	
+	</script>
+</head>
+<body>
+	<h3>회원가입</h3>
+	<form>
+		이름 : <input type="text" id="userName"><br>
+		주소 : <input type="text"><br>
+		생일 : <input type="date"><br>
+		아이디(6~8문자) : <input type="text" id="userId"><br>
+		이메일 : <input type="email"><br>
+		휴대폰 : <input type="text" id="hp"><br>
+		<button type="submit">확인(서브밋)</button>
+		<button type="button" onclick="checkEmpty()">확인1</button>
+		<button type="button" onclick="checkLength()">확인2</button>
+		<br>
+		<button type="button" onclick="validate()">확인</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div.left {
+		float: left; 
+		width: calc(50% - 30px); 
+		text-align: right;
+		margin-bottom: 10px;
+		}
+		div.center {
+		float: left; width: 60px; text-align: center;
+		 height: 250px; display: flex; align-items: center;
+		}
+		div.right {
+		float: right; width: calc(50% - 30px); text-align: left;
+		}
+		div.bottom {
+		clear: both; text-align: center;
+		}
+		select {
+		width: 200px; height: 250px;
+		}
+		div button {
+		width: 30px;
+		}
+		div.bottom button {
+		width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<div class="left">
+		<select id="left" size="10" multiple="multiple">
+		</select>
+	</div>
+	<div class="center">
+		<div>
+			<button type="button" onclick="moveRight(0)">&gt;</button>
+			<button type="button" onclick="moveRight(1)">&gt;&gt;</button>
+			<button type="button" onclick="moveLeft(0)">&lt;</button>
+			<button type="button" onclick="moveLeft(1)">&lt;&lt;</button>
+		</div>
+	</div>
+	<div class="right">
+		<select id="right" size="10" multiple="multiple">
+		</select>
+	</div>
+	<div class="bottom">
+		<input type="text" id="param">
+		<button type="button" onclick="addText()">추가하기</button>
+	</div>
+</body>
+
+<script>
+function moveRight(type) {
+	// 선택된 여러개의 option을 가지고 오는 방법
+	// case1)
+	var rightSel = document.getElementById("right");
+	var leftSel = document.getElementById("left");
+	
+	for(var i = 0 ; i < leftSel.length ; i++) {
+// 		alert(i + "/" + leftSel[i].value);
+		if(type == 1) {
+			rightSel.append(leftSel[i]);
+			i--;
+		} else {
+			if(leftSel[i].selected) {
+// 				alert("선택:"+i + "/" + leftSel[i].value);
+				rightSel.append(leftSel[i]);
+				i--;
+			}
+			
+		}
+	}
+	
+}
+
+function moveLeft(type) {
+	// 선택된 여러개의 option을 가지고 오는 방법
+	// case2)
+	var leftSel = document.getElementById("left");
+	var rightSel = document.getElementById("right");
+	
+	if(type == 1) {
+		for(var i = 0 ; i < rightSel.length ; i++) {
+			leftSel.append(rightSel[i]);
+			i--;
+		}
+	} else {
+		var arr = document.querySelector("#right").selectedOptions;
+	// 		leftSel.append(arr);
+		for(var i = 0 ; i < arr.length ; i++) {
+			console.log(arr);
+			leftSel.append(arr[i]);
+			i--;
+		}
+		
+	}
+	
+}
+
+function addText() {
+	var addText = document.getElementById("param").value;
+	
+	if(addText.trim().length == 0) {
+		alert("입력된 내용이 없습니다.(빈값 입력 안됨)");
+		document.getElementById("param").focus();
+		return;
+	}
+	
+	var options = document.getElementById("left").children;
+	for(var tmp of options) {
+// 		alert(tmp);
+		if(tmp.value == addText) {
+			alert(addText + "는 왼쪽 영역에 이미 등록된 문자 입니다.");
+			document.getElementById("param").focus();
+			return;
+		}
+	}
+	
+	options = document.getElementById("right").children;
+	for(var tmp of options) {
+		if(tmp.value == addText) {
+			alert(addText + "는 오른쪽 영역에 이미 등록된 문자 입니다.");
+			document.getElementById("param").focus();
+			return;
+		}
+	}
+	
+	var ele = document.createElement("option");
+	ele.value = addText;
+	ele.innerHTML = addText;
+	document.getElementById("left").appendChild(ele);
+	
+	document.getElementById("param").value = "";
+	document.getElementById("param").focus();
+	
+}
+
+</script>
+</html>

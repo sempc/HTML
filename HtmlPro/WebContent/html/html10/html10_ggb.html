@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div {
+			width: 500px;
+		}
+		
+		div p {
+			tesxt-align: center;
+		}
+		
+		#human {
+			float: left;
+		}
+		
+		#human p {
+			background-color: yellow;
+		}
+		
+		#com p {
+			background-color: red;
+		}
+		
+		#com {
+			float: left;
+		}
+		
+		footer {
+			text-align: center;
+			clear: both;
+		}
+	</style>
+	<script type="text/javascript">
+		function start(){
+			// 셀렉트 박스에서 선택된 값 가져오기
+			var userIdx = document.getElementById("user").value;
+			
+			return;
+			
+			
+			var res = prompt("가위바위보 게임");
+			
+			var fileName = "";
+			switch(res){
+			case "가위":
+				fileName = "ga_left.png";
+				break;
+			
+			case "바위":
+				fileName = "ba_left.png";
+				break;
+			
+			case "보":
+				fileName = "bo_left.png";
+				break;
+			}
+			
+			document.getElementById("maning").src = "../../images/" + fileName;
+			com1();
+
+		}
+		
+		function com1(){
+		
+			var arr = ["ga","ba","bo"];
+			document.getElementById("coming").src = "../../images/" 
+												+ arr[parseInt(Math.random()*3)]
+												+ "_right.png";
+			com = (document.getElementById("coming").src).substr(-12, 2);
+			human = (document.getElementById("coming").src).substr(-11, 2);
+			
+			if(human == "ba"){
+				switch(com){
+				case"ba":
+					document.getElementById("answer").innerHTML = "무승부";
+				break;
+				case"ga":
+					document.getElementById("answer").innerHTML="human win";
+				break;
+				case"bo":
+					document.getElementById("answer").innerHTML="computet win";
+				break;
+				}
+			}else if(human =="ga"){
+				switch(com){
+				case"ba":
+					document.getElementById("answer").innerHTML="com win";
+				break;
+				case"ga":
+					document.getElementById("answer").innerHTML="무승부";
+				break;
+				case"bo":
+					document.getElementById("answer").innerHTML="human win";
+				break;	
+				}
+			}else {
+				switch(com){
+				case"ba":
+					document.getElementById("answer").innerHTML="human win";
+				break;
+				case"ga":
+					document.getElementById("answer").innerHTML="conputer win";
+				break;
+				case"bo":
+					document.getElementById("answer").innerHTML="draw";
+				break;			
+				}	
+			}
+		}
+	</script>
+</head>
+<body>
+	<select id="user">
+		<option value="0">가위</option>
+		<option value="1">바위</option>
+		<option value="2">보</option>
+	</select>
+	
+	<button type="button" onclick="start()">게임시작</button>
+	<br>
+	<hr>
+	<br>
+	<div id="human">
+		<p>사람</p>
+		<img id="maning" src="../../images/ga_left.png";>
+	</div>
+	<div id="com">
+		<p>컴퓨터</p>
+		<img id="coming" src="../../images/bo_right.png";>
+	</div>
+	<footer>
+		<p id="answer" style="font-size: 50px";>가위바위보 게임</p>
+	</footer>
+</body>
+</html>

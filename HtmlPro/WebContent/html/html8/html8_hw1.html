@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var n1 = prompt("첫번째 숫자를 입력하세요", "ex");
+		var m = prompt("연산자", "ex");
+		var n2 = prompt("두번째 숫자를 입력하세요", "ex");
+		
+		n1 = parseInt(n1);
+		n2 = parseInt(n2);
+		
+		var sum = 0;
+		// == : 값이 같으면 pass, === : 값이 같고 유형도 같으면 pass;
+		// typeof : 데이터 유형 확인할 때 사용
+		if(m == "+") {
+			sum = n1 + n2);
+		} else if(m == "-") {
+			sum = n1 - n2;
+		} else if(m == "*") {
+			sum = n1 * n2;
+		} else if(m == "/") {
+			sum = n1 / n2;
+		} else if(m == "%") {
+			sum = n1 % n2;
+		}
+		document.write("답은" + sum + "입니다");
+		
+	</script>
+</body>
+</html>

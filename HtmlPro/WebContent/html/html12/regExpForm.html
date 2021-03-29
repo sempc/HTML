@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+<script>
+    function checkNotEmpty() {
+        var ele = document.getElementById("userName");
+        if (ele.value.length == 0) {
+            alert("필드가 비어있네요!");
+            ele.focus();
+            return false;
+        } else
+        if (ele.value.length < 2) {
+            alert("2자 이상 입력해야함");
+            ele.focus();
+            return false;
+        }
+        return true;
+    }
+    
+    function sendUserInfo() {
+    	if(validate()) {
+
+    		if(!confirm("회원정보를 전송하시겠습니까?")) return false;
+    		
+    		alert("전송 OK");
+    	}
+    	return false;
+    }
+    
+    function validate() {
+    	var ele, val, regExp;
+    	
+    	//아이디 체크
+    	ele = document.getElementById("userId");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkLength(val, 5, 10)) {
+    		alert(ele.title + "은(는) "+ 5 +"자 이상," + 10 + "자 이하 이어야 합니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /^[a-z][0-9a-z]+$/)) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	
+    	//비밀번호 체크
+    	ele = document.getElementById("userPassword");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkLength(val, 8, 20)) {
+    		alert(ele.title + "은(는) "+ 8 +"자 이상," + 20 + "자 이하 이어야 합니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /[a-z]+/)
+    			|| !checkRegExp(val, /[A-Z]+/)
+    			|| !checkRegExp(val, /[0-9]+/)
+    			|| !checkRegExp(val, /[~`!@\#$%^&*\(\)_\-\=+\[\{\]\}\\|;:\'\",<.>\/?]+/)
+    			) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+
+    	//이름 체크
+    	ele = document.getElementById("userName");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkLength(val, 2, 5)) {
+    		alert(ele.title + "은(는) "+ 2 +"자 이상," + 5 + "자 이하 이어야 합니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /^[가-힣][가-힣]+$/)) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+
+    	//생년월일 체크
+    	ele = document.getElementById("birthDay");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /^\d{4}-\d{2}-\d{2}$/)) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	
+    	//휴대폰번호 체크
+    	ele = document.getElementById("hpNo");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /^(\d{3}-\d{3,4}-\d{4}|\d{3}\d{3,4}\d{4})$/)) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	
+    	//이메일 체크
+    	ele = document.getElementById("email");
+    	val = ele.value;
+    	if(isEmpty(val)) {
+    		alert(ele.title + "은(는) 필수 입력 항목입니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(hasEmpty(val)) {
+    		alert(ele.title + "은(는) 공백을 입력할 수 없습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	if(!checkRegExp(val, /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/)) {
+    		alert(ele.title + " 형식이 잘못 되었습니다.");
+    		ele.focus();
+    		return false;
+    	}
+    	
+    	return true;
+    }
+    function checkRegExp(val, regExp) {
+    	return val.match(regExp);
+    }
+    function checkLength(str, intMin, intMax) {
+    	console.log(">>>>>>>>>" + str +","+intMin+","+intMax);
+    	if(intMin != null) {
+    		if(str.length < intMin)
+    			return false;
+    	}
+    	if(intMax != null) {
+    		if(str.length > intMax)
+    			return false;
+    	}
+    	return true;
+    }
+    function hasEmpty(str) {
+    	var regExp = /\s+/;
+    	if(str.match(regExp)) return true;
+    	return false;
+    }
+    function isEmpty(str) {
+    	if(str.length == 0) return true;
+    	return false;
+    }
+    
+</script>
+<div style="background-color: #BBBBBB; padding: 5px;">
+	<fieldset>
+		<legend>회원정보입력</legend>
+		<form>
+			아이디(5~10문자) : <input type="text" title="아이디" id="userId"><br>
+			비밀번호 : <input type="text" title="비밀번호" id="userPassword"><br>
+			이름 : <input type="text" title="이름" id="userName"><br>
+			생년월일 : <input type="date" title="생년월일" id="birthDay"><br>
+			휴대폰번호 : <input type="text" title="휴대폰번호" id="hpNo"><br>
+			이메일 : <input type="text" title="이메일" id="email"><br>
+<!-- 		    <button type="button" onclick="sendUserInfo();">확인</button> -->
+		    <button type="submit" onclick="return sendUserInfo();">확인</button>
+		<!--     <button type="submit" onclick="return checkNotEmpty();">확인</button> -->
+		</form>
+		
+	</fieldset>
+</div>
+
+</body>
+</html>

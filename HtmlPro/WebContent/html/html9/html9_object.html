@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>객체 생성 방법</title>
+	<script type="text/javascript">
+
+		// 상수로 객체 생성 /////////////////////////////////////
+		var myCar = {
+				model : "GV80"
+				, color : "blue"
+				, year : 2002
+				, speed : 30
+				, brake : function () {
+					// 속도 줄이기 (speed)
+					this.speed -= 10;
+					// this.speed => myCar.speed
+				}
+				, accel : function () {
+					// 속도 올리기 (speed)
+					this.speed += 10;
+				}
+		};
+		
+		document.write(myCar.color);
+		document.write("<br>");
+		document.write("색상변경");
+		document.write("<br>");
+		myCar.color = "red";
+		document.write(myCar.color);
+		document.write("<br>");
+		
+		document.write(myCar.speed + "<br>");
+		document.write("brake 함수 호출<br>");
+		myCar.brake();
+		document.write(myCar.speed + "<br>");
+		
+		
+		// 생성자로 객체 생성 /////////////////////////////////////
+		function Car(model, color, speed) {
+			this.model = model;
+			this.color = color;
+			this.speed = speed;
+			
+			this.brake = function () {
+				this.speed -= 10;
+			}
+			this.accel = function () {
+				this.speed += 10;
+			}
+			
+		}
+		
+		var hongCar = new Car("GV70", "red", 0);
+		var leeCar = new Car("G80", "blue", 100);
+		//....
+		hongCar.color = "white";
+		hongCar.brake();
+		
+		
+		// object를 배열로 변환  - Object.values()
+		document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><br>");
+		document.write("object를 배열로 변환  - Object.values()<br>");
+		document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><br>");
+		var person = {
+			name : "홍길동"
+			,age : 30
+			,city : "대전"
+			,nation : "대한민국"
+			,job : "백수"
+		};
+		var tmp = Object.values(person);
+// 		alert(tmp);
+		document.write(tmp);
+		
+		// object를 배열로 변환  - Object.values()
+		document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><br>");
+		document.write("object를 문자로 변환  - JSON.stringify()<br>");
+		document.write(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><br>");
+		tmp = JSON.stringify(person);
+		document.write(tmp);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function print1(){
+			var name , gender;
+			var hobby = "";
+			name = document.getElementsByName("userId")[0].value;
+			
+			//향상된 for문을 모르므로
+			var arrGender
+			= document.getElementsByName("gender");
+			//<input type="radio" name="gender" value="남자">
+			//<input type="radio" name="gender" value="여자">
+			
+// 			for(var tmp in arrGender) //==>collection에서 사용
+			for(var tmp of arrGender){ //==>단순배열
+ 				alert(tmp.value);
+// 				if(document.getElementsByName("gender")[i].checked==true){
+// 					gender =document.getElementsByName("gender")[i].value;
+// 				}else{
+// 					continue;
+// 				}
+			}
+			return;
+			
+			var arr1 = document.getElementsByName("hobby");
+// 			for(i=0 ; i<arr1.length ; i++){
+			for(var tmp of arr1){
+				
+// 				arr1[i].checked
+				tmp.checked
+				
+				
+				if(document.getElementsByName("hobby")[i].checked==true){
+					if(hobby==""){
+						hobby += document.getElementsByName("hobby")[i].value;
+					}else{
+						hobby +=", "+document.getElementsByName("hobby")[i].value;
+					}
+				}else{
+					continue;
+				}
+			}
+			document.getElementById("result").innerHTML=
+				name+"씨!\n당신은 "+gender+"이고,\n취미는 "+hobby+"이군요!";
+		
+		}
+		</script>
+</head>
+<body>
+	<form action="">
+		이름 : <input type="text" name="userId" size="3"><br>
+		성별 : 
+		<input type="radio" name="gender" value="남자">남
+		<input type="radio" name="gender" value="여자">여<br>
+		취미 : 
+		<input type ="checkbox" name="hobby" id="hobbytrip" value="여행">
+		<label for="hobbytrip">여행</label>
+		<input type ="checkbox" name="hobby"id="hobbybook" value="독서">
+		<label for="hobbybook">독서</label>
+		<input type ="checkbox" name="hobby"id="hobbymovie" value="영화감상">
+		<label for="hobbymovie">영화감상</label>
+		<input type ="checkbox" name="hobby"id="hobbybaduk" value="바둑">
+		<label for="hobbybaduk">바둑</label>
+		<input type ="checkbox" name="hobby"id="hobbyjanggi" value="장기">
+		<label for="hobbyjanggi">장기</label>
+		<input type ="checkbox" name="hobby"id="hobbyclimb" value="등산">
+		<label for="hobbyclimb">등산</label>
+		<input type ="checkbox" name="hobby"id="" value="낚시">
+		<label for="hobbyfishing">낚시</label><br>
+		<button type="button" onclick="print1()">결과출력</button>
+	</form>
+	<textarea id="result" rows="10" cols="50"></textarea>
+</body>
+</html>

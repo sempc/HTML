@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="../../css/mycss.css">
+	<style>
+	#imgview {display:none; max-width:100%; margin-top:25px;}
+	</style>
+<script>
+ // //파일 읽기 - 그림파일일 경우에는 DataURL형식으로 아닌경우 Text형식으로 
+function readFile(){
+	   
+	//input type이 file인 경우 files라는 배열로 리턴
+	//vfile변수는 input type이 file인 입력태그에서 만들어진 
+	//File객체다 
+    vfile = document.getElementById('file').files[0];
+ 
+	//파일정보 얻기 
+	str = "";
+ 
+	str += " 파일명 :" + vfile.name  + "<br>";
+	str += " 파일크기 :" + vfile.size  + "<br>";
+	str += " 파일종류 :" + vfile.type  + "<br>";
+	str += " 변경날짜 :" + vfile.lastModifiedDate  + "<br>";
+	  
+	document.getElementById("info").innerHTML = str;
+	 	
+	
+	//파일 읽기 - 그림파일일 경우에는 DataURL형식으로 아닌경우 Text형식으로 
+	reader = new FileReader();
+	 
+	if(vfile.name.match('jpg|gif|png')){
+		reader.readAsDataURL(vfile);
+	}else{
+		reader.readAsText(vfile);
+	}
+	 
+	 
+	reader.onload = function(){
+	   
+	    document.getElementById("content").value = reader.result ;
+		   
+	    if(reader.result.match("image")){
+			vimg = document.getElementById("imgview");
+		 	vimg.src = reader.result;
+			vimg.style.display = "block" ;  
+		}else {
+			vimg.style.display = "none"; 
+		}
+ 
+    }    
+}
+</script>
+	
+</head>
+
+<body>
+	<div class="box">
+		<input type="file" id="file">
+		<input type="button" value="읽기" onclick="readFile()">
+	</div>
+	<div class="box">
+		<h2>결과 출력(FileReader객체)</h2>
+		이미지파일일 경우에는 DataURL형식으로 아닌경우 Text형식으로<br>
+		<textarea id="content" rows="10" cols="50"></textarea>
+	</div>
+	<div class="box">
+		<h2>파일 정보(File객체)</h2>
+		이미지 파일을 읽은 경우에 이미지가 표시된다.<br>
+		다른 파일을 읽었을 경우 이미지가 표시되지 않는다.<br>
+		<img id="imgview" src="../images/아메리카노.jpg">
+		<br>
+		<div id="info"></div>
+	</div>
+</body>
+</html>
+

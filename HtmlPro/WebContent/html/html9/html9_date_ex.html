@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		// 오늘 날짜
+		var today = new Date();
+		var time = today.getTime();
+		
+		document.write(today + "<br>");
+		document.write(time + "<br>");
+		document.write("<hr>");
+		
+		// 3일 뒤 날짜 계산
+		// 3일을 시간(milsec)으로 계산
+		var addTime = 3 * 24 * 60 * 60 * 1000;
+		
+		// 3일 뒤의 시간
+		var resultTime = time + addTime;
+		var resultDay = new Date(resultTime);
+		
+		document.write(resultTime + "<br>");
+		document.write(resultDay + "<br>");
+		
+		function checkDate() {
+			var buyDate = document.getElementById("buyDate").value;
+			var buyTime = new Date(buyDate).getTime();
+			var curTime = (new Date()).getTime();
+			var tmpDay = parseInt((curTime - buyTime)/1000/60/60/24);
+			alert("구입하신지 " + tmpDay+"일 되었습니다.");
+		}
+	</script>
+</head>
+<body>
+	구입날짜: <input type="date" id="buyDate">
+	<button onclick="checkDate()">검사</button>
+</body>
+</html>

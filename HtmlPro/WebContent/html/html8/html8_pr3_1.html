@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		사용자가 입력한 값을 계속 더하고
+		<br>사용자가 0을 입력하면 누적된 값을 출력
+	</p>
+	<script>
+		var sum = 0;
+		var input;
+		
+		do {
+			input = prompt("값을 입력하세요. 종료하려면 0");
+			input = parseInt(input);
+			sum += input;
+			
+		} while (input != 0){
+			document.write("입력한 값의 총합 : " + sum);
+		}
+		
+	</script>
+	
+	
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h3>Number Guess</h3>
+	<p>1부터 100사이의 숫자를 입력하시오.</p>
+	<input type="text" id="no">
+	<button type="button" onclick="guessNumber()">숫자추측</button>
+	
+	<hr>
+	
+	<h3>가위바위보 게임</h3>
+	<p>가위, 바위, 보 중 하나를 입력하시오.</p>
+	<input type="text" id="gbb">
+	<button type="button" onclick="gbb()">가위바위보</button>
+	
+	<hr>
+	
+	<h3>로또 번호 생성</h3>
+	<button type="button" onclick="getLotto()">번호생성</button>
+	<p id="pLotto"></p>
+	
+</body>
+<script type="text/javascript">
+//	1~100 랜덤 숫자 생성
+// 	Math.random();// 0~0.999999
+// 	Math.random()*100 + 1 //1~100.99999
+// 	parseInt(Math.random()*100 + 1) //1~100
+// 	Math.floor(Math.random()*100 + 1) //1~100
+	var randomNo = Math.floor(Math.random()*100 + 1)
+	
+// 	1~10
+// 	Math.random()//0~0.99999
+// 	Math.random()*10//0~9.9999
+// 	(Math.random()*10+1//1~10
+	
+	function guessNumber() {
+		var val = document.getElementById("no").value;
+		
+		if(val == randomNo) {
+			alert("정답입니다.");
+		} else if(val > randomNo) {
+			alert(val + "보다 작은 수 입니다.");
+		} else if(val < randomNo) {
+			alert(val + "보다 큰 수 입니다.");
+		} else {
+			alert("비교 불가!!! 입력값:" + val);
+		}
+		
+	}
+	
+	var arrGbb = ["가위", "바위", "보"];
+	function gbb() {
+		var comIdx = Math.floor(Math.random() * 3 );
+		var userBbb = document.getElementById("gbb").value;
+		var userIdx = arrGbb.indexOf(userBbb);
+		
+		console.log(comIdx);
+		console.log(userIdx);
+		var result = "";
+		if(comIdx == userIdx) { // 2,2 1,1 0,0
+			result = "비김";
+		} else if(comIdx > userIdx) { // 2,1 2,0 1,0 
+			if(comIdx == 2 && userIdx == 0) {
+				result = "사용자 승";
+			} else {
+				result = "컴퓨터 승";
+			}
+		} else if(comIdx < userIdx) { // 0,1 0,2 1,2 
+			if(comIdx == 0 && userIdx == 2) {
+				result = "컴퓨터 승";
+			} else {
+				result = "사용자 승";
+			}
+		}
+		
+		result += "\n컴퓨터:" + arrGbb[comIdx]
+				+ "\n사용자:" + userBbb;
+		
+		alert(result);
+	}
+	
+	function getLotto() {
+		var arr = [];
+		
+		while(arr.length < 6) {
+			var no = Math.floor(Math.random() * 45 + 1);//1~46!
+			if(arr.indexOf(no) < 0) {
+				arr.push(no);
+			}
+		}
+		
+		arr.sort(function(a, b){ return parseInt(a) - parseInt(b);});
+		
+		document.getElementById("pLotto").innerHTML = arr;
+		
+	}
+
+	var ranNum = Math.floor(Math.random() * (10 – 1 + 1) + 1);
+	document.write(ranNum);
+
+	
+</script>
+</html>
+
+
+
+
+

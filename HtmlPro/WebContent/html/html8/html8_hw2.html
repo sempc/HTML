@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var score;
+		var grade;
+		score = prompt("점수입력");
+		score = parseInt(score);
+		
+		switch (parseInt(score / 10)) {
+		case 10:
+		case 9:
+			grade = "A";
+			break;
+		case 8:
+			grade = 'B';
+			break;
+		case 7:
+			grade = 'C';
+			break;
+		case 6:
+			grade = 'D';
+			break;
+		default:
+			grade = 'F';
+			break;
+		}
+		
+		document.write("당신의 학점은 " + grade + " 입니다.");
+	</script>
+
+</body>
+</html>

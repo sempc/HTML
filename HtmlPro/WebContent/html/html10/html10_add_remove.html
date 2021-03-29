@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	function addImg(obj){
+		var objImgs = document.getElementsByTagName("img");
+		for(var tmp of objImgs) {
+			tmp.remove();
+		}
+		
+		var objImg = document.createElement("img");
+		objImg.src = "../../images/coffee1.jfif";
+		obj.appendChild(objImg);
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li onclick="addImg(this)">컴퓨터</li>
+		<li onclick="addImg(this)">식품</li>
+		<li onclick="addImg(this)">호랑이</li>
+		<li onclick="addImg(this)">구름</li>
+		<li onclick="addImg(this)">커피</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("span").css("background-color", "yellow");
+		$("div span").css("border", "solid 2px red");
+		$("div > span").css("border", "solid 2px blue");
+		
+		$("p[title]"); // title 속성을 가지고 있는 p 요소
+		$("[type=password]"); // title 속성을 가지고 있는 p 요소
+		$("[type='password']"); // title 속성을 가지고 있는 p 요소
+		
+		
+	});
+
+	</script>
+</head>
+<body>
+    <p>이 문단에는 <span>스팬</span> 엘리먼트가 있다</p>
+    <div>
+        이 디비젼에도 <span>스팬</span> 엘리먼트가 있다 
+        <p>디비젼의  내부 문단의
+              <span>스팬</span> 엘리먼트이다
+          </p>
+        <div>  
+            <p> 내부 디비젼의   다시 문단 속 아주
+                <strong>깊은곳에 </strong>
+                <em> 숨어있는 </em>
+                <span>스팬</span>
+                엘리먼트도 있다 
+            </p>
+        </div>
+    </div>
+</body>
+</html>

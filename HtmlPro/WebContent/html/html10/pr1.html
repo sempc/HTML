@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>구구단 출력</title>
+	<style type="text/css">
+		div {
+			text-align: center;
+		}
+		input {
+			width: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function ggd() {
+			var ggd = document.getElementById("ggd").value;
+			
+			var result = "";
+			
+			//구구단 내용 만들기
+			for(var i=0 ; i<9 ; i++){
+				// 8 * 1 = 8
+				result += ggd + " * " + (i+1) + " = " + (ggd*(i+1)) + "<br>";  
+			}
+			
+			// case1) 요소를 생성해서 추가 - createElement
+			var ele = document.createElement("p");
+			ele.innerHTML = result;
+			document.getElementById("result").appendChild(ele);
+			
+			// case2) 텍스트노드를 생성해서 추가 - createTextNode
+// 			var node = document.createTextNode(result);
+// 			document.getElementById("result").appendChild(node);
+			
+			// case3) innerHTML
+// 			var tmpHtml = document.getElementById("result").innerHTML;
+// 			tmpHtml = tmpHtml + result;
+// 			document.getElementById("result").innerHTML = tmpHtml;
+		}
+	</script>
+	
+	
+</head>
+<body>
+<!-- 	<div> -->
+<!-- 		<input type="text" id="ggd">단  -->
+<!-- 		<button type="button" onclick="ggd()">출력</button> -->
+<!-- 	</div> -->
+<!-- 	<br> -->
+<!-- 	<div> -->
+<!-- 		<textarea rows="15" cols="" id="result"></textarea> -->
+<!-- 	</div> -->
+
+	<div>
+		<select id="ggd">
+		</select>
+		<button type="button" onclick="ggd()">출력</button>
+	</div>
+	<br>
+	<div id="result">
+		<h3>결과출력</h3>		
+	</div>
+	
+	<script type="text/javascript">
+		var parentEle = document.getElementById("ggd");// <select>
+		
+		for(var i=2 ; i<101 ; i++){
+			// <option value="2">2단</option>
+			var ele = document.createElement("option");
+			ele.value = i;
+			ele.innerHTML = i + "단";
+			
+			parentEle.appendChild(ele);
+			
+		}
+	</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		두 수를 입력(prompt) 두수의 합이 100이상 일 때만 출력<br> 
+		continue를 이용 , 두수 모두 0 이 입력되면 종료 
+	</p>
+	<script type="text/javascript">
+	while(true) {
+		var n1 = prompt("n1 입력하셈", "n1");
+		var n2 = prompt("n2 입력하셈", "n2");
+		n1 = parseInt(n1);
+		n2 = parseInt(n2);
+		
+		if(n1 == 0 && n2 == 0){
+			break;
+		}
+		else if((n1 + n2) < 100){
+			continue;
+		}
+		
+		document.write("n1 : "+n1+", n2 : "+n2);
+		document.write("<br>");
+		document.write("n1+n2의 값은 ? >> " +(n1+n2));
+		document.write("<br>");
+		document.write("<br>");
+	}
+	</script>
+</body>
+</html>

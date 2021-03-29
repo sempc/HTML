@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <a href="http://www.ddit.or.kr">(재)대덕 인재 개발원</a>
+    <br><br>
+    <a href="mailto:power2c@ddit.or.kr">빠워에게 메일보내</a>
+    <br><br>
+    <div>
+        <label>Some images:</label>
+    </div>
+    <div>
+        <img src="../../images/ex1.jpg" id="img1" alt="Hibiscus" width="50px" height="50px">
+        <img src="../../images/ex2.jpg" id="little" title="little Bear" width="50px" height="50px">
+        <img src="../../images/ex3.jpg" id="little-bear" alt="Verbena" width="50px" height="50px">
+        <img src="../../images/ex4.jpg" id="img4" title="name d Cozmo" width="50px" height="50px">
+        <img src="../../images/ex5.jpg" id="img5" title="named img5" alt="Lily" width="50px" height="50px">
+        <img src="../../images/ex6.jpg" id="img6" title="coffeePot" width="50px" height="50px">
+        <img src="../../images/ex7.png" width="100px" height="100px">
+    </div>
+    <div id="someDiv">이곳은 ID속성이 someDiv인 &lt;div&gt;태그 입니다. </div>
+    <form>
+        <div>
+            <label>Text:</label>
+            <input type="text" id="aTextField" name="someTextField"/>
+        </div>
+        <br>
+        <button type="submit" id="submitButton">Submit</button>
+        <input type="button" value="클릭~~">
+    </form>
+</body>
+
+	<script>
+	
+// 	$("input[type=button]").css("background-color", "yellow");
+// 	$("a[href^=mailto]").css("background-color", "yellow");
+	$("input[type=button], a[href^=mailto]").css("background-color", "yellow");
+	$("a[href*=power2c]").css("text-decoration", "none");
+	
+	$("img[id!=img1]").css("border", "solid blue");
+	$("img[src$=png]").css("border", "solid green");
+	$("img[alt]").css("border", "solid 5px");
+	$("img[title*=named]").css("border-style", "double");
+	$("img[id|=little]").css("border-style", "dotted");
+	
+	$("input[type=text]").css("border", "10px dotted red");
+	
+	</script>
+</html>

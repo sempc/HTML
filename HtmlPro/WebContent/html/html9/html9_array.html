@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		var fruits = ["apple", "banana", "peer", "banana"];
+		var cars = ["아반떼", "소나타", "제네시스"];
+		
+		document.write(fruits + "<br>");
+		document.write(cars + "<br>");
+		document.write("<hr>");
+		document.write(cars.concat(fruits) + "<br>");
+		document.write(cars.sort() + "<br>");
+// 		fruits.length
+		
+		var arr = [];
+		while(true) {
+			var name = prompt("사람이름을 입력하세요.\n공백문자 입력 또는 '취소' 버튼 클릭 시 종료")
+// 			alert(typeof name);
+			if(name == "" || name == " " || name == "null")
+				break;
+			arr.push(name);
+		}
+		document.write(arr + "<br>");
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
