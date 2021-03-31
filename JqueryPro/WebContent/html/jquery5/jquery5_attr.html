@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		img { height: 100px; width: 150px; }
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#btnSet").click(function(){
+// 				var str = $("#img1").attr("src");
+// 				// ==> "../../images/flowers.jpg"
+// 				var arr = str.split("/");
+// 				// ==> ["..", "..", "images", "flowers.jpg"]
+// 				var fileName = arr[arr.length-1];
+// 				// ==> "flowers.jpg"
+				
+// 				$("#img1").attr("title", fileName);
+				
+				// case1) for문 사용
+// 				var objs = $("img");
+// 				for(){
+					
+// 				}
+
+				// case2) each() 사용
+				$("img").each(function(){
+// 					console.log(this);
+					var src = $(this).attr("src");
+					var arr = src.split("/");
+					var fileName = arr[arr.length-1];
+					$(this).attr("title", fileName);
+				});
+				
+
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<form>
+		체크박스:
+		<input type="checkbox" id="tmpCkb" checked="checked">
+		<br>
+		라디오:
+		<input type="radio" id="rdMail" name="rd" value="M" checked="checked">
+		<label for="rdMail">남자</label>
+		<input type="radio" id="rdFemail" name="rd" value="F">
+		<label for="rdFemail">여자</label>
+		<br>
+		<label for="sel">리스트박스</label> : 
+		<select id="sel">
+			<option value="0">--선택--</option>
+			<option value="1">하나</option>
+			<option value="2">둘</option>
+			<option value="3" selected="selected">셋</option>
+			<option value="4">넷</option>
+		</select><br>
+		<label for="readText">(readonly)</label> : 
+		<input type="text" id="readText" value="가나다" readonly="readonly">
+		<br>
+		<label for="runBtn">(disabled)</label> : 
+		<button type="button" id="btnRun" disabled="disabled">실행</button>
+		<br>
+		<button type="button" id="btnAttr">attr확인</button>
+		<button type="button" id="btnProp">prop확인</button>
+	</form>
+	<br>
+	<input type="checkbox" id="chkAll">
+	<label for="chkAll">전체선택</label>
+	&nbsp;&nbsp;&nbsp;
+	<input type="checkbox" id="chk1" name="hobby">
+	<label for="chk1">1</label>
+	<input type="checkbox" id="chk2" name="hobby">
+	<label for="chk2">2</label>
+	<input type="checkbox" id="chk3" name="hobby">
+	<label for="chk3">3</label>
+	<input type="checkbox" id="chk4" name="hobby">
+	<label for="chk4">4</label>
+	<input type="checkbox" id="chk5" name="hobby">
+	<label for="chk5">5</label>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#chkAll").click(function(){
+			// 1) '전체선택' 체크박스가 체크되어 있는지 확인
+			var isChecked = $(this).prop("checked");
+			
+			// 2) '전체선택' 체크박스가 체크되어 있다면
+			if(isChecked) {
+				// 다른 체크박스 체크해주기
+				// $("#chkAll ~ :checkbox")
+				$("[name=hobby]").prop("checked", true);
+				
+			} else {
+				// 3) '전체선택' 체크박스가 체크되어 있지 않다다면
+				// 다른 체크박스 체크 해제 해주기
+				$("[name=hobby]").prop("checked", false);
+			}
+			
+			$("input[type=checkbox]")
+			
+		});
+	
+	});
+</script>
+</html>
+
+
+
+
+
+
+
+
+
