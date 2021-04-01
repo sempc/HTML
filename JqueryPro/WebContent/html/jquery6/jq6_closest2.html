@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	#divScript {
+		height: 50px;
+		border: 3px dotted;
+	}
+	</style>
+	<script type="text/javascript"  src="../../js/jquery-3.6.0.js"></script>
+	<script>
+	$(document).ready(function() {
+		  $("button").click(function() {
+		    $("ul, li").css('background-color', '');
+		    var strScript = "";
+		  
+		    var strId = $(this).attr("id");
+		    var li_2 = document.getElementById('two');//li 2
+		  
+		    if(strId == "btnCase1") {
+		      $('li.2-1').closest('ul').css('background-color', 'red');
+		      strScript = "$('li.2-1').closest('ul')";
+		    } else if(strId == "btnCase2") {
+		      $('li.2-1').closest('li').css('background-color', 'yellow');
+		      strScript = "$('li.2-1').closest('li')";
+		    } else if(strId == "btnCase3") {
+		      $('li.2-1').closest('ul', li_2).css('background-color', 'green');
+		      strScript = "$('li.2-1').closest('ul', li_2)";
+		    } else if(strId == "btnCase4") {
+		      var li_1 = document.getElementById('one');//li 2
+		      $('ul.2-1').closest('li', li_1).css('background-color', 'pink');
+		      $('ul.2-1').closest('li', li_2).css('background-color', 'lightblue');//listItem2의 하위요소까지만 검색.listItem2는 포함X
+		      strScript = "$('ul.2-1').closest('li', li_1)" + "<br>"
+		                + "$('ul.2-1').closest('li', li_2)";
+		    }
+
+		    $("#divScript").html(strScript);
+
+		  });
+		});
+
+	</script>
+</head>
+<body>
+
+	<button id="btnCase1">case1</button>
+	<button id="btnCase2">case1</button>
+	<button id="btnCase3">case1</button>
+	<button id="btnCase4">case4</button>
+	<div id="divScript"></div>
+
+	<ul class="1" id="one">
+	  <li class="1">1</li>
+	  <li class="2" id="two">2
+	    <ul class="2-1">
+	      <li class="2-1">2-1</li>
+	      <li class="2-2">2-2
+	        <ul class="2-2-1">
+	          <li class="2-2-1">2-2-1</li>
+	          <li class="2-2-2">2-2-2</li>
+	          <li class="2-2-3">2-2-3</li>
+	        </ul>
+	      </li>
+	      <li class="2-3">2-3</li>
+	    </ul>
+	  </li>
+	  <li class="3">3</li>
+	</ul>
+
+
+</body>
+</html>
