@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<style type="text/css">
+		table {
+			width: 100%;
+			text-align: center;
+		}
+	</style>
 	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
 	<script>
 		$(document).ready(function() {
@@ -16,6 +22,22 @@
 			$("li").slice(0, 4).css("font-weight", "bold");
 // 			$("li:gt(4)").css("font-size", "0.5em");
 			$("li").slice(5).css("font-size", "0.5em");
+			
+			/////////////////////////////////////////////
+			$("tr:even").css("background-color", "yellow");
+			//even - 짝수를 의미. 테이블의 0번째 tr부터 적용됨
+			$("tr:odd").css("background-color", "#AAAAAA");
+			
+			//첫번째 줄을 검정색 바탕에 흰색 글자로 스타일 주기
+// 			$("tr").first().css("background-color", "#000000")
+// 			.css("color", "#FFFFFF");
+			$("tr").first().css({
+				"background-color": "#000000"
+				, "color": "#FFFFFF"
+			});
+					
+			
+			
 		});
 	</script>
 </head>
@@ -31,5 +53,47 @@
 		<li>eight</li>
 		<li>nine</li>
 	</ul>
+	
+	<hr>
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>가격</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>천원</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>2천원</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>3천원</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>4천원</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>5천원</td>
+		</tr>
+	</table>
+	
+	<hr>
+	
+	<p>
+	
+	
 </body>
 </html>
+
+
+
+
+
+
+
+
