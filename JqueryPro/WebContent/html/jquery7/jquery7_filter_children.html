@@ -43,16 +43,20 @@
 			
 			
 			////////////////////////////////
+			
 			$("#btnHidden").click(function() {
 				$(":hidden", "#ex3").each(function(){
-// 					alert($(this).html());
+					alert($(this).html());
 					console.log(this);
 				});
 			});
+			// "hidden요소"
+// 			$("button:contains(hidden)")
+			
 
 			$("#btnVisible").click(function() {
 				$(":visible", "#ex3").each(function(){
-// 					alert($(this).html());
+					alert($(this).html());
 					console.log(this);
 				});
 			});
