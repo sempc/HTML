@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style type="text/css">
+		table {width: 100%;}
 	</style>
 	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
 	<script>
@@ -22,6 +23,40 @@
 			// 각 리스트의 마지막 li에 파란색 점선 테두리 넣기
 			$("li:last-child").css("border", "3px dotted blue");
 			
+// 			$("td:nth-child(3n-2)").css("background-color", "#777777");
+// 			$("td:nth-child(3n-1)").css("background-color", "#AAAAAA");
+// 			$("td:nth-child(3n)").css("background-color", "#BBBBBB");
+			$("td:nth-child(3n+1)").css("background-color", "#777777");
+			$("td:nth-child(3n+2)").css("background-color", "#AAAAAA");
+			$("td:nth-child(3n)").css("background-color", "#BBBBBB");
+
+// 			$("td:nth-child(1)").css("background-color", "#777777");
+// 			$("td:nth-child(2)").css("background-color", "#AAAAAA");
+// 			$("td:nth-child(3)").css("background-color", "#BBBBBB");
+			
+// 			$("tr").first().css("background-color", "#000000")
+// 			.css("color", "#FFFFFF");
+			// ==> tr 위에 td가 올라가 있고, td에 색상이 있어서 적용되지 않음
+			// ==> 첫번째 tr의 td에 색상을 적용해 주기
+			$("tr:first-child td").css("background-color", "#000000")
+			.css("color", "#FFFFFF");
+			
+			
+			////////////////////////////////
+			$("#btnHidden").click(function() {
+				$(":hidden", "#ex3").each(function(){
+// 					alert($(this).html());
+					console.log(this);
+				});
+			});
+
+			$("#btnVisible").click(function() {
+				$(":visible", "#ex3").each(function(){
+// 					alert($(this).html());
+					console.log(this);
+				});
+			});
+
 			
 		});
 	</script>
@@ -42,7 +77,50 @@
 		<li>프로그래머</li>
 	</ol>
 	
+	<hr>
 	
+	<table>
+		<tr>
+			<td>이름</td>
+			<td>주소</td>
+			<td>전화번호</td>
+			<td>주소</td>
+			<td>전화번호</td>
+		</tr>
+		<tr>
+			<td>홍</td>
+			<td>대전</td>
+			<td>042</td>
+			<td>대전</td>
+			<td>042</td>
+		</tr>
+		<tr>
+			<td>길</td>
+			<td>서울</td>
+			<td>02</td>
+			<td>서울</td>
+			<td>02</td>
+		</tr>
+		<tr>
+			<td>동</td>
+			<td>부산</td>
+			<td>051</td>
+			<td>부산</td>
+			<td>051</td>
+		</tr>
+	</table>
+	<hr>
+	<div id="ex3">
+		<p>보이는 문단</p>
+		<p style="visibility: hidden;">숨겨진 문단</p>
+		<p style="display: none;">자리를 차지 하지 못한 문단</p>
+		<p style="opacity: 0;">투명한 문단</p>
+		<hr>
+		<button type="button" id="btnHidden">hidden요소</button>
+		<button type="button" id="btnVisible">visible요소</button>
+	</div>
+	
+	<br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
 
