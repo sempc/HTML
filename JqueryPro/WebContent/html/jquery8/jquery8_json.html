@@ -35,8 +35,27 @@
 				var objTmp = JSON.parse(strTmp);
 				$("#spanSecond").text(objTmp);
 				
-				// 3) 나머지 표시해주기
+				// .html()이 아닌 .text()로 표시할 것~
 				
+				// 3) 나머지 표시해주기
+				// 이름
+// 				$("#name").html(objTmp.name);
+				$("#name").text(objTmp.name);
+				// 주소 - address
+				$("#address").text(objTmp.address.city + " " + objTmp.address.gu + " " + objTmp.address.dong);
+				// 취미 - hobby
+// 				$("#hobby").text(objTmp.hobby);
+				var strHobby = "";
+				for(var i=0 ; i<objTmp.hobby.length ; i++) {
+					strHobby += "(" + objTmp.hobby[i] + "), ";
+				}
+				strHobby = strHobby.substr(0, strHobby.length-2);
+				$("#hobby").text(strHobby);
+				
+				// 생년월일 - birthday
+// 				$("#birthday").text(objTmp.birth);
+				var date = new Date(objTmp.birth);
+				$("#birthday").text(date);
 				
 			});
 			
