@@ -7,13 +7,14 @@
 </head>
 <body>
 	<h3>XMLHttpRequest 사용하기</h3>
-	<button type="button">Get 방식 호출</button>
+	<button type="button" id="btnGetA">Get 비동기 호출</button>
+	<button type="button" id="btnGetS">Get 동기 호출</button>
 	<hr>
 	<div id="divResult" style="border: 1px solid; height: 300px;"></div>
 </body>
 
 <script type="text/javascript">
-	$("button").click(function(){
+	$("#btnGetA").click(function(){
 		// XMLHttpRequest 객체로 호출하기
 		// 1) XMLHttpRequest 객체 생성하기
 		var xhttp = new XMLHttpRequest();
@@ -21,6 +22,40 @@
 		var url = "html1.html";
 		xhttp.open("GET", url, true);
 		// 3) 서버(, 페이지 등) 전송하기 - send();
+		xhttp.send();
+		
+		// 4) 결과처리하기
+		xhttp.onreadystatechange = function(){
+			// 요청이 처리 완료됨(데이터 받음) 상태 && 서버에서 요청이 정상 처리됨 상태
+			if(this.readyState == 4 && this.status == 200){ 
+				// 정상 처리 되었을때 화면 처리 할 내용
+				console.log(this.responseText);
+				$("#divResult").html(this.responseText);
+			}
+			
+		};
+		
+	});
+	
+	$("#btnGetS").click(function(){
+		// XMLHttpRequest 객체로 호출하기
+		// 1) XMLHttpRequest 객체 생성하기
+		var xhttp = new XMLHttpRequest();
+		// 2) 서버(, 페이지 등) 연결하기 - open(method, url, async);
+		var url = "html1.html";
+		xhttp.open("GET", url, false); // <== 동기식 호출로 변경!!!
+		// 3) 결과처리하기
+		xhttp.onreadystatechange = function(){
+			// 요청이 처리 완료됨(데이터 받음) 상태 && 서버에서 요청이 정상 처리됨 상태
+			if(this.readyState == 4 && this.status == 200){ 
+				// 정상 처리 되었을때 화면 처리 할 내용
+				console.log(this.responseText);
+				$("#divResult").html(this.responseText);
+			}
+			
+		};
+		
+		// 4) 서버(, 페이지 등) 전송하기 - send();
 		xhttp.send();
 		
 		
