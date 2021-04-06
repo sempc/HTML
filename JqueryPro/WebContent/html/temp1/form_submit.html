@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="myForm" action="intro.html" method="get">
+		이름: <input type="text" name="name"><br>
+		나이: <input type="text" name="age"><br><br>
+		<input type="button" onclick="myFunction()" value="post버튼">
+		<input type="submit" value="get버튼">
+		<hr>
+		<button type="button" id="sendAjax">Ajax전송</button>
+	</form>
+	<span id="resultAxaj"></span>
+</body>
+
+<script>
+function myFunction() {
+	var fm = document.getElementById("myForm");
+	fm.method = "post";
+	fm.action = "ajax_ex1_old.jsp";
+	fm.submit();
+}
+</script>
+
+<script src="../../js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$("#sendAjax").click(function() {
+		
+		$.ajax({
+			url : "ajax_ex1_old.jsp"	//"ajax_ex1_old.jsp"
+			,type : "GET"
+			//,data : {name:"박소연"}	//
+			,data : $("#myForm").serialize()
+			,success:function(data){
+				$('span').html(data);
+			}
+			,error:function(jqXHR, textStatus, errorThrown){
+				alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+			}
+         });
+		   
+	        //,dataType : 'text'  //"xml", "json", "script", "text", "html"
+			//,traditional : true //json Array 직렬화
+			//,jsonp : "callback"
+
+			//data:$('form').serialize(),
+		
+	});
+	
+});
+
+</script>
+
+</html>
