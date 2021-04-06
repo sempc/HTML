@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<form action="../jquery1/jquery1_basic.html" method="get" id="fm">
+		이름:<input>
+		<br>
+		나이:<input>
+		<br>
+		<button type="submit">submit</button>
+		<button type="button" onclick="fnGet()">get버튼</button>
+		<button type="button">post버튼</button>
+		<hr>
+		<button type="button" onclick="fnAjax()">Ajax버튼</button>
+	</form>
+	<div id="divResult"></div>
+</body>
+<script type="text/javascript">
+	function fnGet(){
+		// submit 실행
+		var fm = document.getElementById("fm");// <form>
+		fm.action = "html1.html?userId=test01&password=asdf";// url 세팅
+		fm.method = "post";
+		fm.submit();
+		
+	}
+	
+	function fnAjax(){
+		$.ajax({
+			url : "intro.html"
+			,type : "GET"
+// 			,data :
+// 			,dataType :
+			,success : function(data){
+				$("#divResult").html(data);
+			}
+			,error : function(){
+				
+			}
+		});
+		
+	}
+	
+	
+</script>
+</html>
+
+
+

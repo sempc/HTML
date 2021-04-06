@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnText").click(function(){
+		$.ajax({
+			url : "data_text.txt"
+			,success : function(data) {
+				$("#divResult").html(data);
+			}
+		});
+	})
+	$("#btnHtml1").click(function(){
+		$.ajax({
+			url : "data_text.html"
+			,success : function(data) {
+				$("#divResult").html(data);
+				//data
+			}
+		});
+	})
+	$("#btnHtml2").click(function(){
+		$.ajax({
+			url : "data_html.html"
+			,success : function(data) {
+				$("#divResult").html(data);
+			}
+		});
+	})
+// 	$("#btnJsonObj").click(function(){
+// 		$.ajax({
+// 			url : 'data_jsonobj.jsp'
+// 			//,type : 'get'
+// 			//,dataType : 'json'
+// 			,success : function(resData){
+// 				var code ="이름 : "  + resData.name + "<br>";
+// 				code += "전화 : " + resData.tel + "<br>";
+// 				code += "주소 : " + resData.addr + "<br>";
+// 				$('#result').html(code);
+// 			}
+// 			,error : function(xhr){
+// 				alert("오류.." + xhr.status );
+// 			}
+// 		}
+// 	})
+// 	$("#btnJsonArr").click(function(){
+// 		$.ajax({
+// 			url : 'data_jsonarr.jsp'
+// 			,type : 'get'
+// 			//,data : //입력 되는 데이타 없다 , 전송할 데이타없다 , 생략
+// 			,dataType : 'json' //서버로부터 결과를 응답받는 데이타의 타입
+// 			,success : function(resData){  //응답받는 부분 
+// 			  var code="<ol>" ;
+// 			  $.each(resData, function(i) {
+// 				  code += "<li>" + resData[i] + "</li>" ;
+// 			  }) 
+// 			  code += "</ol>";
+// 			  $('#result').html(code);
+// 		   }, 
+// 		   error : function(xhr){
+// 			    alert("오류 발생.." + xhr.status);  //404, 500, 
+// 		   }
+// 		}
+// 	})
+// 	$("#btnJsonMix").click(function(){
+// 		$.ajax({
+
+// 		   url : 'data_jsonmix.jsp',
+// 		   type : 'get',
+// 		   dataType : 'json',
+// 		   success : function(res){
+// 			  var code="";
+// 			  $.each(res, function(i){
+// 				  code += (i+1) + "번째 회원 <br>";
+// 				  code += "이름 : " + res[i].name + "<br>";
+// 				  code += "주소 : " + res[i].addr + "<br>";
+// 				  code += "전화 : " + res[i].tel + "<br><br>";
+// 			  })
+// 		      $('#result').html(code);
+// 		   },
+// 		   error : function(xhr){
+// 			   alert("오류발생 : " + xhr.status );
+// 		   }
+// 		}
+// 	})
+})
+
+
+</script>
+</head>
+<body>
+<h1>AJAX로 데이터 가져오기 - 로컬 파일</h1>
+<button type="button" id="btnText">텍스트파일</button>
+<button type="button" id="btnHtml1">HTML</button>
+<button type="button" id="btnHtml2">HTML</button>
+<br>
+<button type="button" id="btnJsonObj">JSON Obj</button>
+<button type="button" id="btnJsonArr">JSON Arr</button> 
+<button type="button" id="btnJsonMix">JSON Mix</button>
+<hr>
+<div id="divResult" style="display:inline; width: 45%; height:500px; float: left; border:1px solid;"></div>
+<div id="divResult1" style="width: 45%; height:500px; float: right: ; border:1px solid;"></div>
+
+</body>
+</html>

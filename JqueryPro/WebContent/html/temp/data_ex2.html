@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnSearch").click(function(){
+		$.ajax({
+// 			url : 'json_list_empty.jsp'
+			url : 'json_list.jsp'
+			,dataType : 'json'
+			,success : function(data) {
+				console.log(data);
+				
+				$("#tbList tr").not("#tbList tr:nth-child(1)").remove();
+				
+				if(data == null || data.length == 0 ) {
+					alert(2);
+					//데이터가 없는 경우
+					$("#tbList tr:nth-child(2) > td").text("검색 결과가 존재하지 않습니다.");
+					return;
+				}
+				
+				var html = "";
+				$.each(data, function(i) {
+					html += "<tr>";
+					html += "<td>" + data[i].name + "</td>";
+					html += "<td>" + data[i].addr + "</td>";
+					html += "<td>" + data[i].tel + "</td>";
+					html += "</tr>";
+				});
+				
+				$("#tbList tr:nth-child(2)").remove();
+				$("#tbList").append(html);
+			}
+			,error : function(xhr) {
+				alert("오류발생 : " + xhr.status );
+			}
+		})
+	})
+})
+
+
+</script>
+</head>
+<body>
+	<h1>AJAX로 데이터 가져오기 - 로컬 파일</h1>
+	<button type="button" id="btnSearch">검색</button>
+	<hr>
+	<table border="1" id="tbList" style="width: 400px;">
+		<tr>
+			<th>이름</th>
+			<th>주소</th>
+			<th>전화번호</th>
+		</tr>
+		<tr>
+			<td colspan="3">검색 버튼을 누르세요</td>
+		</tr>
+	</table>
+</body>
+</html>
