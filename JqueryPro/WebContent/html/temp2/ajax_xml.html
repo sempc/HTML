@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>XML 응답</title>
-<script src="../../js/jquery-3.5.1.js"></script>
+<script src="../../js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#btnArtis").click(function(){
@@ -12,7 +12,7 @@ $(function(){
 			return;
 		
 		$.ajax({
-			url : "cd_catalog.xml"
+			url : "../jquery9/cd_catalog.xml"
 			, dataType : "xml"
 			, success : function(data){
 				makeArtistList(data);
@@ -36,10 +36,13 @@ $(function(){
 	});
 	
 })
-
+//$().children()
+//.children
+//.childNodes
+var arr;
 function makeArtistList(xmlData) {
 	var list = "";
-	var arr = xmlData.getElementsByTagName("ARTIST");
+	arr = xmlData.getElementsByTagName("ARTIST");
 	
 	for(var i = 0 ; i < arr.length ; i++) {
 		list += arr[i].childNodes[0].nodeValue;
