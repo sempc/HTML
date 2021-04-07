@@ -206,6 +206,7 @@ function makeTitleList(param){
 function makeXmlList(param){
 	//param : document
 	var arrCd = param.getElementsByTagName("CD");
+//	var arrCd = $("CD", param);
 	
 	var str = ""
 			+ "<table>         "
