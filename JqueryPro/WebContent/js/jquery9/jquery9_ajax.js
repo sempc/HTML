@@ -139,7 +139,7 @@ function fnXml2(){
 
 function fnXmlTable(){
 	$.ajax({
-		url : "cd_catalog.xml"
+		url : "cd_catalog1.xml"
 		,dataType : "xml"
 		,success : function(data){
 			makeXmlList(data);
@@ -204,11 +204,77 @@ function makeTitleList(param){
 }
 
 function makeXmlList(param){
+	//param : document
+	var arrCd = param.getElementsByTagName("CD");
+	
+	var str = ""
+			+ "<table>         "
+			+ "<tr>            "
+			+ "	<th>번호</th>    "
+			+ "	<th>제목</th>    "
+			+ "	<th>가수</th>    "
+			+ "	<th>가격</th>    "
+			+ "	<th>발행년도</th>  "
+			+ "</tr>           ";
+	
+	for(var i=0 ; i<arrCd.length ; i++){
+		var title = "", artist = "", price = "", year = "";
+		
+		var obj = arrCd[i];
+		// obj : <CD>
+		var objTitle = obj.getElementsByTagName("TITLE");
+		var objArtist = obj.getElementsByTagName("ARTIST");
+		var objPrice = obj.getElementsByTagName("PRICE");
+		var objYear = obj.getElementsByTagName("YEAR");
+		
+		if($(objTitle).length > 0)
+			title = $(objTitle).html();// 난알아요
+		
+		if($(objArtist).length > 0)
+			artist = $(objArtist).html();// 난알아요
+		
+		if($(objPrice).length > 0)
+			price = $(objPrice).html();// 난알아요
+		
+		if($(objYear).length > 0)
+			year = $(objYear).html();// 난알아요
+		
+		str += "<tr>              "
+			+ "	<td>" + (i+1) +"</td>      "//번호
+			+ "	<td>" + title + "</td>      "//제목
+			+ "	<td>" + artist + "</td>      "//가수
+			+ "	<td>" + price + "</td>      "//가수
+			+ "	<td>" + year + "</td>    "//발행년도
+			+ "</tr>             ";
+		
+	}
+	str += "</table>";
+	
+	$("#divResult").html(str);
+	
+}
+
+
+
+
+
+
+//	console.log($("CD", param));
+
+
+function makeXmlList1(param){
 	var arr = param.getElementsByTagName("CD");
-	console.log(arr);// arr : HTMLCollection
+//	console.log(arr);// arr : HTMLCollection
 	for(var obj of arr){
-		console.log(obj);
-		console.log($(obj).children());
+//		console.log(obj);
+//		console.log($(obj).children());
+//		console.log($(obj).children().eq(0));
+		console.log($(obj).children().eq(0).html());
+//		console.log($(obj).children().eq(0).attr("nodeName"));
+//		console.log($(obj).children().eq(0).attr("localName"));
+//		console.log($(obj).children().eq(0).attr("tagName"));
+		
+		return;
 	}
 	
 }
