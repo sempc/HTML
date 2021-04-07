@@ -10,6 +10,7 @@
 String str = "홍길동";
 System.out.println("오잉~");
 
+// request.setCharacterEncoding("utf-8");
 String userName = request.getParameter("userName");
 String userAge = request.getParameter("userAge");
 %>
