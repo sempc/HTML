@@ -23,6 +23,8 @@
 		<button type="button" onclick="fnJsonObj()">JSON obj</button>
 		<button type="button" onclick="fnJsonArr()">JSON 배열</button>
 		<button type="button" onclick="fnJsonList()">JSON 목록</button>
+		<br>
+		<button type="button" onclick="fnXml()">XML</button>
 		
 	</form>
 	<div id="divResult"></div>
@@ -96,22 +98,7 @@
 			,dataType : "json"
 			,success : function(data){
 				console.log(">>>>> 성공:"+data);
-				
-// 			<ol>
-// 				<li>프로그래머</li>
-// 				...
-// 				<li>주부</li>
-// 			</ol>
-				var str = "<ol>";
-				for(var i=0 ; i<data.length ; i++){
-					str += "<li>" + data[i] + "</li>";
-				}
-// 				$.each(data, function(idx){
-// 					str += "<li>" + data[idx] + "</li>";
-// 				});
-				str += "</ol>";
-				
-				$("#divResult").html(str);
+				makeResult(data);
 				
 			}
 			,error : function(data){
@@ -140,6 +127,53 @@
 		});
 	}
 	
+	function fnXml(){
+		$.ajax({
+			url : "cd_catalog.xml"
+// 			,type : "get"//"post"
+// 			,data : {}
+			,dataType : "xml"
+			,success : function(data){
+				makeArtistList(data);
+
+			}
+			,error : function(xhr){
+				console.log(xhr);
+				alert("오류발생");
+			}
+				
+		});
+		
+	}
+	
+	function makeResult(param){
+		var str = "<ol>";
+		for(var i=0 ; i<param.length ; i++){
+			str += "<li>" + param[i] + "</li>";
+		}
+//		$.each(param, function(idx){
+//			str += "<li>" + param[idx] + "</li>";
+//		});
+		str += "</ol>";
+		
+		$("#divResult").html(str);
+			
+	}
+	
+	function makeArtistList(param){
+		console.log(param);//param ==> document
+// 		console.log(param.getElementsByTagName("CATALOG"));
+// 		console.log(param.getElementsByTagName("CD"));
+//		document.getElementsByTagName("~")
+//		childNodes
+//		children
+		var arr = param.getElementsByTagName("ARTIST");
+		for(arr){
+			
+		}
+		
+		
+	}
 	
 </script>
 

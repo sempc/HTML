@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XML 응답</title>
+<script src="../../js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnArtis").click(function(){
+		if(!confirm("XML 응답을 받으시겠습니까?"))
+			return;
+		
+		$.ajax({
+			url : "cd_catalog.xml"
+			, dataType : "xml"
+			, success : function(data){
+				makeArtistList(data);
+			}
+			, error : function(){ alert(2); }
+		});
+	});
+	
+	$("#btnMusic").click(function(){
+		if(!confirm("XML 응답을 받으시겠습니까?"))
+			return;
+		
+		$.ajax({
+			url : "cd_catalog.xml"
+			, dataType : "xml"
+			, success : function(data){
+				makeMusicList(data);
+			}
+			, error : function(){ alert(2); }
+		});
+	});
+	
+})
+
+function makeArtistList(xmlData) {
+	var list = "";
+	var arr = xmlData.getElementsByTagName("ARTIST");
+	
+	for(var i = 0 ; i < arr.length ; i++) {
+		list += arr[i].childNodes[0].nodeValue;
+		if(i < arr.length - 1)
+			list += "<br>";
+	}
+	console.log(list+"==================");
+	$("#divRes1").html(list);
+}
+function makeMusicList(xmlData) {
+	var list = "";
+	var arrCd = xmlData.getElementsByTagName("CD");
+	
+	if(arrCd == null || arrCd.length == 0) {
+		$("#divRes1").html(list);
+		return;
+	}
+	
+	list = '<table border="1">'
+			+ '<tr>        '
+			+ '	<th>제목</th>'
+			+ '	<th>가수</th>'
+			+ '</tr>       ';
+			
+	for(var i = 0 ; i < arrCd.length ; i++) {
+		var title = arrCd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+		var artist = arrCd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+		list += '<tr>'
+		       +'<td>' + title + '</td>'
+		       +'<td>' + artist + '</td>'
+		       +'</tr>';
+	}
+
+	list += '</table>';
+	
+// 	console.log(list+"==================");
+	$("#divRes1").html(list);
+}
+
+</script>
+</head>
+<body>
+	<h1>AJAX 테스트</h1>
+	<button type="button" id="btnArtis">가수목록실행</button>
+	<button type="button" id="btnMusic">노래목록실행</button>
+	<div id="divRes1"></div>
+	
+</body>
+</html>

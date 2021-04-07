@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<button type="button" id="btnGetA">GET 비동기 전송</button>
+	<button type="button" id="btnGetS">GET 동기 전송</button>
+	<br>
+	<button type="button" id="btnPostA">POST 비동기 전송</button>
+	<button type="button" id="btnPostS">POST 동기 전송</button>
+	<hr>
+	<div id="result" style="height: 200px; overflow: auto; border: 1px solid;"></div>
+	<hr>
+	<button type="button" id="btnGet">GET 데이터 전송</button>
+	<button type="button" id="btnPost">POST 데이터 전송</button>
+	<div id="result2" style="height: 200px; overflow: auto; border: 1px solid;"></div>
+</body>
+<script type="text/javascript">
+
+// document.getElementById("btnGet").onclick = function(){
+// 	alert(1);
+// };
+	var url = "../jquery8/NewFile.html";
+	
+	// GET 방식 비동기 전송
+	$("#btnGetA").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.open("GET", url, true);
+		xhttp.send();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				$("#result").html(this.responseText);	
+			}
+		}
+// 		$("#result").html(xhttp.responseText);//비동기에서 불가능
+		
+	});
+	// GET 방식 동기 전송
+	$("#btnGetS").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.open("GET", url, false);
+		xhttp.send();
+		//동기에서는 X, 비동기에서 O - send 전에 세팅해야 동기에서도 O
+// 		xhttp.onreadystatechange = function(){
+// 			console.log(11111111);
+// 			if(this.readyState == 4 && this.status == 200){
+// 				$("#result").html(this.responseText);	
+// 			}
+// 		}
+// 		$("#result").html(xhttp.responseText);//동기에서는 가능	
+		
+	});
+	
+	// POST 방식 비동기 전송
+	$("#btnPostA").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.open("POST", url, true);
+		xhttp.send();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				$("#result").html(this.responseText);	
+			}
+		}
+// 		$("#result").html(xhttp.responseText);//비동기에서 불가능
+		
+	});
+	// POST 방식 동기 전송
+	$("#btnPostS").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.open("POST", url, false);
+		xhttp.send();
+		//동기에서는 X, 비동기에서 O - send 전에 세팅해야 동기에서도 O
+// 		xhttp.onreadystatechange = function(){
+// 			console.log(11111111);
+// 			if(this.readyState == 4 && this.status == 200){
+// 				$("#result").html(this.responseText);	
+// 			}
+// 		}
+		$("#result").html(xhttp.responseText);//동기에서는 가능	
+		
+	});
+	
+	
+// 	var url2 = "result1.html";
+	var url2 = "result1.jsp";
+	
+	$("#btnGet").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				$("#result2").html(this.responseText);	
+			}
+		}
+		
+		xhttp.open("GET", url2 + "?fname=hong", true);
+		xhttp.send();
+		
+		
+	});
+	
+	$("#btnPost").click(function(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				$("#result2").html(this.responseText);	
+			}
+		}
+		
+// 		xhttp.open("POST", url2 + "?fname=hong", true);
+		xhttp.open("POST", url2, true);
+		//setRequestHeader 해줘야 send 한 데이터 get 할 수 있음
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("fname=hong");
+		
+		
+	});
+</script>
+</html>
