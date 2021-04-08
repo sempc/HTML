@@ -57,7 +57,7 @@ public class MemberServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-			
+		
 	}
 	
 }
