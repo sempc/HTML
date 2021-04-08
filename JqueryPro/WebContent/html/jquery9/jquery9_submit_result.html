@@ -14,17 +14,15 @@
 	var userName = "";
 	var userAge = "";
 	
-// 	window.location.href;
 	var url = location.href; //"http://localhost:9090/JqueryPro/html/jquery9/jquery9_submit_result.html?userName=아이유&userAge=25"
-	var params = url.substr(url.indexOf("?")+1); // userName=아이유&userAge=25
-	var arr = params.split("&"); // ["userName=아이유", "userAge=25"]
-// 	arr[0]; //"userName=아이유"
-// 	arr[0].split("=") // ["userName", "아이유"]
-	userName = decodeURI(arr[0].split("=")[1]); // "아이유"
+// 	var params = url.substr(url.indexOf("?")+1); // userName=아이유&userAge=25
+// 	var arr = params.split("&"); // ["userName=아이유", "userAge=25"]
+// 	userName = decodeURI(arr[0].split("=")[1]); // "아이유"
 	
-// 	arr[1] // "userAge=25"
-// 	arr[1].split("=") // ["userAge", "25"]
-	userAge = arr[1].split("=")[1]; // "25"
+// 	userAge = arr[1].split("=")[1]; // "25"
+	
+	userName = getValue(url, "userName");
+	
 	
 	var userPassword= getValue(url, "userPassword");
 	var userHpno= getValue(url, "userHpno");
