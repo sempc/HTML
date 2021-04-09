@@ -15,17 +15,9 @@ public class MemberDao extends BaseDao {
 		smc = super.getSqlMapClient();
 	}
 	
-	public void createMember() throws SQLException {
-		smc.insert("member.createMember");
-	}
-	public void updateMember() throws SQLException {
-		smc.update("member.updateMember");
-	}
-	public void deleteMember() throws SQLException {
-		smc.delete("member.deleteMember");
-	}
 	public List<MemberVO> retrieveMemberList(MemberVO memberVo) throws SQLException {
 		return smc.queryForList("member.retrieveMemberList", memberVo);
 	}
+	
 	
 }

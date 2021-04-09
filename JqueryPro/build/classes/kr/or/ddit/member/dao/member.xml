@@ -5,9 +5,6 @@
 
 <sqlMap namespace="member">
 
-	<insert id="createMember"></insert>
-	<update id="updateMember"></update>
-	<delete id="deleteMember"></delete>
 	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
 		SELECT MEM_ID                memId             
              , MEM_PASS              memPass           
