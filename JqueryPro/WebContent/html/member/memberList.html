@@ -17,15 +17,28 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#btnSearch").click(function(){
+				
+				//서버로 전달할 데이터 만들기
+				var userId = $("#userId").val();
+				var userName = $("#userName").val();
+				
+				var param = {
+						memId : userId
+						, memName : userName
+						};
+				// ==> { memId : "test", memName : ""}
+				
 				$.ajax({
 					url : "/JqueryPro/MemberServlet"
 					,type : "post"
-					,data : ""
+					,data : param
 					,dataType : "json"
 					,success : function(data){
 						console.log(data);
 						alert("성공");
-						//
+						// data를 이용해서 테이블을 만들기
+						makeTable(data);
+						
 					}
 					,error : function(xhr){
 						console.log(xhr);
@@ -36,6 +49,18 @@
 			});
 			
 		});
+		
+		function makeTable(data){
+// 			var str = "<tr><td>...";
+			
+// 			for(data.length) {
+// 				str += "tr,td";
+// 			}
+			
+// 			table.html(str);
+			
+		}
+		
 	</script>
 </head>
 <body>
@@ -45,11 +70,11 @@
 			<div class="row">
 				<div class="search col-xs-5">
 					<label>ID</label>
-					<input type="text">
+					<input type="text" id="userId">
 				</div>
 				<div class="search col-xs-5">
 					<label>이름</label>
-					<input type="text">
+					<input type="text" id="userName">
 				</div>
 				<div class="search-btn col-xs-2">
 					<button type="button">초기화</button>
