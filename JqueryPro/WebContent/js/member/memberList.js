@@ -15,8 +15,8 @@ $(document).ready(function(){
 		$.ajax({
 			url : "/JqueryPro/MemberServlet"
 			,type : "post"
-			,data : param
-//			,data : $("#fm").serialize()
+//			,data : param
+			,data : $("#fm").serialize()
 			,dataType : "json"
 			,success : function(data) {
 				alert('성공');

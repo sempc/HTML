@@ -30,22 +30,22 @@ public class MemberServlet extends HttpServlet {
 		String flag = req.getParameter("flag");
 		
 		try {
-			if(flag.equals("L")) { // 목록조회
+			if("L".equals(flag)) { // 목록조회
 				List<MemberVO> list = retrieveMemberList(req);
 				
 				req.setAttribute("list", list);
 				RequestDispatcher  disp = req.getRequestDispatcher("/html/member/memberListResult.jsp");
 				disp.forward(req, resp);
 				
-			} else if(flag.equals("C")) { // 등록
+			} else if("C".equals(flag)) { // 등록
 				createMember(req);
 				
 				
-			} else if(flag.equals("R")) { // 단건 조회
+			} else if("R".equals(flag)) { // 단건 조회
 				
-			} else if(flag.equals("U")) { // 수정
+			} else if("U".equals(flag)) { // 수정
 				
-			} else if(flag.equals("D")) { //삭제
+			} else if("D".equals(flag)) { //삭제
 				
 			}
 			
