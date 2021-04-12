@@ -83,7 +83,7 @@
           FROM TB_MEMBER
          WHERE 1=1
          <isNotEmpty property="memId">
-         AND MEM_ID = #memId#
+         AND MEM_ID LIKE '%'||#memId#||'%'
          </isNotEmpty>
          <isNotEmpty property="memName" prepend="AND">
          MEM_NAME = #memName#

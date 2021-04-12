@@ -12,57 +12,10 @@
 	div {
 /*  		border: 1px solid; */
 	}
+	table, td { border: 1px solid; }
 	</style>
 	<script src="../../js/jquery-3.6.0.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#btnSearch").click(function(){
-				
-				//서버로 전달할 데이터 만들기
-				var userId = $("#userId").val();
-				var userName = $("#userName").val();
-				
-				var param = {
-						memId : userId
-						, memName : userName
-						, flag : "L"
-						};
-				// ==> { memId : "test", memName : ""}
-				
-				$.ajax({
-					url : "/JqueryPro/MemberServlet"
-					,type : "post"
-					,data : param
-					,dataType : "json"
-					,success : function(data){
-						console.log(data);
-						alert("성공");
-						// data를 이용해서 테이블을 만들기
-						makeTable(data);
-						
-					}
-					,error : function(xhr){
-						console.log(xhr);
-						alert("오류발생");
-					}
-				});
-				
-			});
-			
-		});
-		
-		function makeTable(data){
-// 			var str = "<tr><td>...";
-			
-// 			for(data.length) {
-// 				str += "tr,td";
-// 			}
-			
-// 			table.html(str);
-			
-		}
-		
-	</script>
+	<script type="text/javascript" src="/js/member/memberList.js"></script>
 </head>
 <body>
 	<div>
@@ -85,15 +38,25 @@
 		</div>
 		<div class="result">
 		목록
-			<table style="border: 1px solid; width: 100%;">
-				<tr>
-					<th>ID</th>
-					<th>이름</th>
-				</tr>
-				<tr>
-					<td>iu</td>
-					<td>아이유</td>
-				</tr>
+			<table style="border: 1px solid; width: 100%;" id="tbResult">
+				<colgroup>
+					<col style="width: 100px;">
+					<col style="width: auto;">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>이름</th>
+						<th>성별</th>
+						<th>생년월일</th>
+						<th>전화번호</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">검색 버튼을 클릭하세요.</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		<div class="bottom">
