@@ -29,29 +29,50 @@ public class MemberServlet extends HttpServlet {
 		// 브라우저로 부터 받은 값을 사용하기 위해 request에서 parameter를 get.
 		String flag = req.getParameter("flag");
 		
-		if(flag.equals("L")) {
-			List<MemberVO> list = retrieveMemberList(req);
+		try {
+			if(flag.equals("L")) { // 목록조회
+				List<MemberVO> list = retrieveMemberList(req);
+				
+				req.setAttribute("list", list);
+				RequestDispatcher  disp = req.getRequestDispatcher("/html/member/memberListResult.jsp");
+				disp.forward(req, resp);
+				
+			} else if(flag.equals("C")) { // 등록
+				createMember(req);
+				
+				
+			} else if(flag.equals("R")) { // 단건 조회
+				
+			} else if(flag.equals("U")) { // 수정
+				
+			} else if(flag.equals("D")) { //삭제
+				
+			}
 			
-			// 브라우저로 전달할 결과를 request에 attribute로 세팅
-			req.setAttribute("list", list);
-			
-			RequestDispatcher  disp = req.getRequestDispatcher("/html/member/memberListResult.jsp");
-			disp.forward(req, resp);
-						
-			
-		} else if(flag.equals("C")) {
-			
-		} else if(flag.equals("R")) {
-			
-		} else if(flag.equals("U")) {
-			
-		} else if(flag.equals("D")) {
-			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
 	
-	private List<MemberVO> retrieveMemberList(HttpServletRequest req) {
+	private void createMember(HttpServletRequest req) throws SQLException {
+		// TODO Auto-generated method stub
+		String memId = req.getParameter("memId");
+		String memName = req.getParameter("memName");
+		// 그외 정보들...
+
+		MemberVO memberVo = new MemberVO();
+		memberVo.setMemId(memId);
+		memberVo.setMemName(memName);
+		// 그 외 정보들 VO에 세팅...
+		
+		MemberService service = new MemberService();
+		service.createMember(memberVo);
+		
+	}
+
+	private List<MemberVO> retrieveMemberList(HttpServletRequest req) throws SQLException {
 		String memId = req.getParameter("memId");
 		String memName = req.getParameter("memName");
 		
@@ -63,7 +84,7 @@ public class MemberServlet extends HttpServlet {
 		MemberService service = new MemberService();
 		List<MemberVO> list = service.retrieveMemberList(memberVo);
 		return list;
-			
+		
 	}
 	
 	

@@ -45,7 +45,7 @@
 	</insert>
 	<update id="updateMember"></update>
 	
-	<select id="retrieveMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
+	<select id="retrieveMember" parameterClass="String">
 		SELECT MEM_ID                memId             
              , MEM_PASS              memPass           
              , MEM_NAME              memName           
@@ -59,10 +59,6 @@
              , MEM_JOB               memJob      
 		FROM TB_MEMBER
 		WHERE MEM_ID = #memId#
-		<isNotEmpty property="memName">
-		AND MEM_NAME = #memName#
-		</isNotEmpty>
-		
 	</select>
 	
 	

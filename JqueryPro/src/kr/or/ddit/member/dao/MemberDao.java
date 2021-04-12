@@ -19,10 +19,17 @@ public class MemberDao extends BaseDao {
 //	
 //	updateMember
 //	
-//	retrieveMember
+	public MemberVO retrieveMember(String memId) throws SQLException {
+		return (MemberVO)smc.queryForObject("member.retrieveMember", memId);
+	}
 	
 	public List<MemberVO> retrieveMemberList(MemberVO memberVo) throws SQLException {
 		return smc.queryForList("member.retrieveMemberList", memberVo);
+	}
+
+	public void createMember(MemberVO memberVo) throws SQLException {
+		// TODO Auto-generated method stub
+		smc.insert("member.createMember", memberVo);
 	}
 	
 	
