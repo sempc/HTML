@@ -28,6 +28,17 @@ function getValue(url, key){
 	
 }
 
+function isEmpty(val) {
+	if(val == undefined) return true;
+	if(val == null) return true;
+	if(val == "null") return true;
+	
+	val = jQuery.trim(val);
+	if(val.length == 0) return true;
+	
+	return false;
+}
+
 /** 핸드폰 번호 포맷 */
 function formatHp(val){
 	//val : 01012341234, 010-1234-1234, 010-12341234, 0101234-1234

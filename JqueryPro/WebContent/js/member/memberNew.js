@@ -3,13 +3,13 @@
  */
 $(function(){
 	//기념일 셀렉트박스 세팅
-	initMemorial();
-	//직업 셀렉트박스 세팅
-	initJobSelect();
-	//취미 체크박스 세팅
-	initHobbyCheck();
-	//우편번호 관련 도시 등 셀렉트박스 세팅
-	initSidoSelect();
+//	initMemorial();
+//	//직업 셀렉트박스 세팅
+//	initJobSelect();
+//	//취미 체크박스 세팅
+//	initHobbyCheck();
+//	//우편번호 관련 도시 등 셀렉트박스 세팅
+//	initSidoSelect();
 	
 	$("#tbZipResult").on("dblclick", "tbody tr", function(){
 		var zipCode = $(this).children("td:eq(0)").text();
@@ -39,7 +39,7 @@ $(function(){
 })
 function initMemorial() {
 	$.ajax({
-		url : "/CodeServlet"
+		url : "/JqueryPro/CodeServlet"
 		,type: "post"
 		,data: {"groupCode" : "A03"}
 		,dataType: "json"
@@ -114,7 +114,7 @@ function makeHobbyCheck(data) {
 
 function initSidoSelect() {
 	$.ajax({
-		url : "/ZipServlet"
+		url : "/JqueryPro/ZipServlet"
 		,type: "post"
 		,data: {"zipType" : "SIDO"}
 		,dataType: "json"
