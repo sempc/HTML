@@ -25,7 +25,7 @@ function chkRegExp(val, type){
 	var regExp = "";
 	if(type == "MEMBERID") {
 		//영어소문자와 숫자로 구성. 3글자 이상 10글자 이하 
-		regExp = /^[a-z0-9]{3,15}$/;
+		regExp = /^[a-z0-9]{3,10}$/;
 		if(regExp.test(tmp)) {
 			return true;
 		} else {

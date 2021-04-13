@@ -69,7 +69,7 @@
 	});
 	
 	// [중복검사] 버튼에 클릭 이벤트
-	function chkId(){
+	function chkId1(){
 		var memId = $("#memId").val();
 		
 		// 빈 값 확인     
@@ -91,13 +91,18 @@
 		
 		// DB에서 중복검사 수행
 		$.ajax({
-			url : "~"
+			url : "/JqueryPro/MemberServlet"
 			,type : "post"
 			,data : {"memId" : memId, "flag" : "CHKID"}
 			,dataType : "json"
 			,success : function(data){
 				console.log(data);
-				$("#spMemId").hide();
+				if(isEmpty(data.result)){
+					$("#spMemId").html("중복된 ID가 존재합니다.");
+					$("#spMemId").show();
+				} else {
+					$("#spMemId").hide();
+				}
 			}
 			,error : function(xhr){
 				console.log(xhr);
@@ -121,7 +126,7 @@
 				<label class="control-label col-sm-2 required" for="memId">ID</label>
 				<div class="col-sm-10 form-inline">
 					<input type="text" class="form-control" id="memId" placeholder="id를 입력하세요" name="memId" required>
-					<button type="button" class="btn btn-default btn-sm" id="btnMemId" onclick="chkId()">중복검사</button>
+					<button type="button" class="btn btn-default btn-sm" id="btnMemId" onclick="chkId1()">중복검사</button>
 					<span id="spMemId" style="display: none;">영어 소문자와 숫자 사용 가능. 3~10자리</span>
 					<input type="hidden" id="checkedMemId" >
 				</div>
