@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="zip">
+
+	<select id="retrieveZipList" parameterClass="kr.or.ddit.common.vo.ZipVO" resultClass="kr.or.ddit.common.vo.ZipVO">
+	select ZIPCODE zipcode
+	      ,SIDO    sido
+	      ,GUGUN   gugun
+	      ,DONG    dong
+	      ,RI      ri
+	      ,BLDG    bldb
+	      ,BUNJI   bunji
+	      ,SEQ     seq
+	  from tb_zip
+	where SIDO = #sido#
+	  and GUGUN = #gugun#
+	  and DONG = #dong#
+	order by SEQ
+	</select>
+	
+	<select id="retrieveSidoList" resultClass="kr.or.ddit.common.vo.ZipVO">
+	select SIDO from tb_zip
+	group by SIDO
+	order by SIDO
+	</select>
+	
+	<select id="retrieveGugunList" parameterClass="kr.or.ddit.common.vo.ZipVO" resultClass="kr.or.ddit.common.vo.ZipVO">
+	select GUGUN from tb_zip
+	where SIDO = #sido#
+	group by GUGUN
+	order by GUGUN
+	</select>
+	
+	<select id="retrieveDongList" parameterClass="kr.or.ddit.common.vo.ZipVO" resultClass="kr.or.ddit.common.vo.ZipVO">
+	select DONG from tb_zip
+	where SIDO = #sido#
+	and GUGUN = #gugun#
+	group by DONG
+	order by DONG
+	</select>
+	
+</sqlMap>
