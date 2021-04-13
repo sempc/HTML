@@ -41,11 +41,25 @@ function makeTable(data){
 	
 	for(var i=0 ; i<data.length ; i++) {
 		str += "<tr>"
-			+ "<td>" + data[i].id + "</td>"
-			+ "<td>" + data[i].name + "</td>"
+			+ "<td>" + (i + 1) + "</td>"
+			+ "<td>" + data[i].memId + "</td>"
+			+ "<td>" + data[i].memName + "</td>"
+			+ "<td>" + data[i].memPass + "</td>"
+			+ "<td>" + data[i].memBir + "</td>"
+//			+ "<td>" + data[i].memHp + "</td>" //01012341234
+			+ "<td>" + formatHp(data[i].memHp) + "</td>" //01012341234
+			+ "<td>" + data[i].memMail + "</td>"
+			+ "<td>" + data[i].memJobName + "</td>"
 			+ "</tr>";
 	}
-	
+	console.log(str);
 	$("#tbResult tbody").html(str);
 
 }
+
+
+
+
+
+
+
