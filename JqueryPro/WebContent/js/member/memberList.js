@@ -63,3 +63,12 @@ function makeTable(data){
 
 
 
+function goMemberNew() {
+// 	window.location.href = "/html/member/memberNew.jsp";
+	
+	$("#targetUrl").val("/html/member/memberNew.jsp");
+	var fm = document.getElementById("tmpFm");
+	fm.method = "post";
+	fm.action = "/JqueryPro/PageServlet";
+	fm.submit();
+}
