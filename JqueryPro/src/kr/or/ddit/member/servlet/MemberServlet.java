@@ -57,7 +57,7 @@ public class MemberServlet extends HttpServlet {
 				
 				req.setAttribute("resultCnt", resultCnt);
 				RequestDispatcher  disp 
-				  = req.getRequestDispatcher("/html/member/idCheckResult.jsp");
+				  = req.getRequestDispatcher("/html/common/checkResult.jsp");
 				disp.forward(req, resp);
 			}
 			

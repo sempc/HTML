@@ -7,7 +7,6 @@ import kr.or.ddit.common.dao.CodeDao;
 import kr.or.ddit.common.vo.CodeVO;
 
 public class CodeService {
-	// singleton 패턴 적용
 	private CodeDao dao;
 	
 	public CodeService() {
@@ -16,8 +15,8 @@ public class CodeService {
 	}
 	
 	public List<CodeVO> retrieveCodeList(CodeVO codeVo) throws SQLException {
-		List<CodeVO> list = dao.retrieveCodeList(codeVo);
-		return list;
+		// TODO Auto-generated method stub
+		return dao.retrieveCodeList(codeVo);
 	}
 	
 }
