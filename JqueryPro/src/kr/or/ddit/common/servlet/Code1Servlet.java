@@ -1,4 +1,4 @@
-package kr.or.ddit.member.servlet;
+package kr.or.ddit.common.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.vo.MemberVO;
 
 @WebServlet("/MemberServlet")
-public class MemberServlet extends HttpServlet {
+public class Code1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override

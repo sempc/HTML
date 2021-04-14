@@ -16,8 +16,9 @@ public class MemberService {
 	}
 	
 	public MemberVO retrieveMember(String memberId) throws SQLException {
-		MemberVO memberVo = dao.retrieveMember(memberId);
-		return memberVo;
+		// 검증 작업 
+		
+		return dao.retrieveMember(memberId);
 	}
 	
 	public List<MemberVO> retrieveMemberList(MemberVO memberVo) throws SQLException {

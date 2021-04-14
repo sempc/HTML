@@ -65,6 +65,21 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function(){
+		// 직업코드 조회해서 세팅하기
+		$.ajax({
+			url : ""
+			,type : "post"
+			,data : {"groupCode" : 'A02'} // 직업코드 조회
+			,dataType : "json"
+			,success : function(data){
+				console.log(data);
+			}
+			,error : function(xhr){
+				console.log(xhr);
+				alert("오류");
+			}
+		});
+		
 		
 	});
 	
