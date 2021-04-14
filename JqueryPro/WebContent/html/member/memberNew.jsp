@@ -64,15 +64,36 @@
 	</style>
 	
 	<script type="text/javascript">
+	function makeJobSelect(data){
+// 		// 방법1)
+// 		var strHtml = "";
+// 		$("#memJob").html(strHtml);//<select>
+		
+// 		// 방법2)
+// 		$("#memJob").empty();
+// 		$("#memJob").append(ele1);
+// 		$("#memJob").append(ele2);
+		
+		var strHtml = "";
+		for(var i=0 ; i<data.length ; i++){
+			strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
+		}
+		$("#memJob").html(strHtml);
+		
+	}
+	
 	$(document).ready(function(){
+		
 		// 직업코드 조회해서 세팅하기
 		$.ajax({
-			url : ""
+			url : "/JqueryPro/CodeServlet"
 			,type : "post"
 			,data : {"groupCode" : 'A02'} // 직업코드 조회
 			,dataType : "json"
 			,success : function(data){
 				console.log(data);
+				makeJobSelect(data);
+				
 			}
 			,error : function(xhr){
 				console.log(xhr);
