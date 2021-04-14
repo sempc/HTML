@@ -97,12 +97,6 @@
 			,dataType : "json"
 			,success : function(data){
 				console.log(data);
-				if(isEmpty(data.result)){
-					$("#spMemId").html("중복된 ID가 존재합니다.");
-					$("#spMemId").show();
-				} else {
-					$("#spMemId").hide();
-				}
 			}
 			,error : function(xhr){
 				console.log(xhr);

@@ -5,9 +5,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원 정보 관리</title>
+	
 	<link rel="stylesheet" type="text/css" href="../../css/listcss.css?v=1">
 	<script src="../../js/jquery-3.5.1.js"></script>
-	<script src="../../js/member/memberList.js?v=1"></script>
+	<script src="../../js/com/dditUtils.js"></script>
+	<script src="../../js/member/memberList.js"></script>
+	
+	<style type="text/css">
+	.badge {
+		display: inline-block;
+		margin:0 5px;
+		background: #4d79f6;
+		opacity: 0.8;
+		padding: 3px 8px;
+		border-radius: 15px;
+		color:#fff;
+		font-size:13px;
+		text-align: center;
+		font-family:tahoma;
+	}
+	</style>
+
 </head>
 <body>
 	<!-- 본문영역 시작 -->
@@ -41,6 +59,7 @@
 		<article class="grid-wrap">
 			<header class="grid-wrap-header">
 				<h4>회원목록</h4>
+				<span class="badge" title="전체 건수" id="count" style="display: none;"></span>
 				<div class="btn-box-right">
 					<div class="btn-group">
 						<button type="button" class="btn btn-outline" id="btnExcel1"><i class="ico-download2"></i>엑셀다운로드</button>
@@ -51,7 +70,7 @@
 			</header>
 			<div class="grid-wrap-body">
 				<table class="gridtbl tbl" id="tbResult">
-					<caption>회원 목록</caption>
+					<caption>표의 제목</caption>
 					<colgroup>
 						<col style="width:60px">
 						<col style="width:80px">

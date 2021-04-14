@@ -49,8 +49,13 @@ public class MemberServlet extends HttpServlet {
 				
 			} else if("CHKID".equals(flag)) { // ID 체크
 				MemberVO memberVo = checkMemberId(req);
+
+				int resultCnt = 0;
+				if(memberVo != null) {
+					resultCnt = 1;
+				}
 				
-				req.setAttribute("memberVo", memberVo);
+				req.setAttribute("resultCnt", resultCnt);
 				RequestDispatcher  disp = req.getRequestDispatcher("/html/member/idCheckResult.jsp");
 				disp.forward(req, resp);
 			}
@@ -63,7 +68,6 @@ public class MemberServlet extends HttpServlet {
 	}
 	
 	private MemberVO checkMemberId(HttpServletRequest req) throws SQLException {
-		// TODO Auto-generated method stub
 		String memId = req.getParameter("memId");
 		
 		MemberService service = new MemberService();
