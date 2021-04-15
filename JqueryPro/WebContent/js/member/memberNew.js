@@ -1,7 +1,6 @@
 /**
  * 
  */
-var loginId = "";
 
 $(document).ready(function(){
 	// 화면 초기화 작업들 진행
@@ -16,6 +15,9 @@ $(document).ready(function(){
 	// 4. '취미코드' 세팅 (체크박스)
 	initHobbyCheck();
 	
+	// 5. '우편번호찾기 화면-시' 세팅
+//	initCitySelect();
+	
 });
 
 function initJobSelect(){
@@ -28,7 +30,6 @@ function initJobSelect(){
 		,success : function(data){
 			console.log(data);
 			makeJobSelect(data);
-			
 		}
 		,error : function(xhr){
 			console.log(xhr);
@@ -38,27 +39,57 @@ function initJobSelect(){
 }
 
 function initMemorialSelect(){
+	$.ajax({
+		url : "/JqueryPro/CodeServlet"
+		,type : "post"
+		,data : {"groupCode" : 'A03'} // 직업코드 조회
+		,dataType : "json"
+		,success : function(data){
+			console.log(data);
+			makeMemorialSelect(data);
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
 }
 function initHobbyCheck(){
 	
 }
+function initCitySelect(){
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+//		,data : {"groupCode" : 'A02'} // 직업코드 조회
+		,dataType : "json"
+		,success : function(data){
+			console.log(data);
+//			makeCitySelect(data);
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
+}
 
 
 function makeJobSelect(data){
-// 		// 방법1)
-// 		var strHtml = "";
-// 		$("#memJob").html(strHtml);//<select>
-	
-// 		// 방법2)
-// 		$("#memJob").empty();
-// 		$("#memJob").append(ele1);
-// 		$("#memJob").append(ele2);
-	
 	var strHtml = "";
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
 	}
 	$("#memJob").html(strHtml);
+	
+}
+
+function makeMemorialSelect(data){
+	var strHtml = "";
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
+	}
+	$("#memMemorial").html(strHtml);
 	
 }
 
@@ -101,3 +132,10 @@ function chkId1(){
 	});
 	
 }
+
+//function openZip() {
+//	initSidoSelect();
+//	$("#divZipResult").hide();
+//	$("#tbZipResult tbody").empty();
+//	$("#zipModal").modal();
+//}

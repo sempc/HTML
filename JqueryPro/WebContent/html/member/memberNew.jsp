@@ -12,7 +12,7 @@
 	<script src="/JqueryPro/js/jquery-3.6.0.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/JqueryPro/js/common/dditUtils.js?v=1"></script>
-	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js?v=1"></script>
+	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js"></script>
 <!--     <script type="text/javascript" src="../../js/lib/moment.min.js"></script> -->
 <!--     <script type="text/javascript" src="../../js/lib/daterangepicker.js"></script> -->
 <!--     <script type="text/javascript" src="../../js/comm/ui.js"></script> -->
@@ -138,7 +138,8 @@
 				<label class="control-label col-sm-2 required" for="memId">주소</label>
 				<div class="col-sm-10 form-inline">
 					<input type="text" class="form-control form-inline-zip1" id="memZip" name="memZip" readonly="readonly" required>
-					<button type="button" class="btn btn-info btn-sm" id="btnAddr" onclick="openZip()">검색</button>
+					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#zipModal">검색</button>
+<!-- 					<button type="button" class="btn btn-info btn-sm" id="btnAddr" onclick="openZip()">검색</button> -->
 					<input type="text" class="form-control form-inline-zip2" id="memAdd1" name="memAdd1" readonly="readonly" required>
 					<br>
 					<div class="form-group-inner-down">
@@ -164,7 +165,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="recvEmail">광고메일</label>
 				<div class="col-sm-10">
-					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="Y" checked>수신</label>
+					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="Y" >수신</label>
 					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="N" id="recvEmailYnN" >미수신</label>
 				</div>
 <!-- 				<label class="control-label col-sm-2" for="memJob">직업</label> -->
@@ -196,7 +197,7 @@
 		</div>
 	</div>
 	
-	<!-- 우편번호 검색 Modal -->
+	<!-- 우편번호 검색 Modal Start -->
 	<div class="modal fade" id="zipModal" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -207,10 +208,10 @@
 				</div>
 				<div class="modal-body">
 					시: <select id="city" onchange="setGu()">
-						<option value="">선택하세요</option>
-						<option value="대전">대전</option>
-						<option value="세종">세종</option>
-						<option value="충남">충남</option>
+<!-- 						<option value="">선택하세요</option> -->
+<!-- 						<option value="대전">대전</option> -->
+<!-- 						<option value="세종">세종</option> -->
+<!-- 						<option value="충남">충남</option> -->
 					</select>
 					구: <select id="gu" onchange="setDong()" disabled="disabled">
 						<option>선택하세요</option>
@@ -240,6 +241,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- 우편번호 검색 Modal End -->
 	
 	<form id="tmpFm">
 		<input type="hidden" name="action" id="actionTmlFm">
