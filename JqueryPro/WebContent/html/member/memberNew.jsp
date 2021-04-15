@@ -11,7 +11,7 @@
 	<!-- JS -->
 	<script src="/JqueryPro/js/jquery-3.6.0.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/JqueryPro/js/com/dditUtils.js?v=1"></script>
+	<script type="text/javascript" src="/JqueryPro/js/common/dditUtils.js?v=1"></script>
 	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js?v=1"></script>
 <!--     <script type="text/javascript" src="../../js/lib/moment.min.js"></script> -->
 <!--     <script type="text/javascript" src="../../js/lib/daterangepicker.js"></script> -->
@@ -64,85 +64,6 @@
 	</style>
 	
 	<script type="text/javascript">
-	function makeJobSelect(data){
-// 		// 방법1)
-// 		var strHtml = "";
-// 		$("#memJob").html(strHtml);//<select>
-		
-// 		// 방법2)
-// 		$("#memJob").empty();
-// 		$("#memJob").append(ele1);
-// 		$("#memJob").append(ele2);
-		
-		var strHtml = "";
-		for(var i=0 ; i<data.length ; i++){
-			strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
-		}
-		$("#memJob").html(strHtml);
-		
-	}
-	
-	$(document).ready(function(){
-		
-		// 직업코드 조회해서 세팅하기
-		$.ajax({
-			url : "/JqueryPro/CodeServlet"
-			,type : "post"
-			,data : {"groupCode" : 'A02'} // 직업코드 조회
-			,dataType : "json"
-			,success : function(data){
-				console.log(data);
-				makeJobSelect(data);
-				
-			}
-			,error : function(xhr){
-				console.log(xhr);
-				alert("오류");
-			}
-		});
-		
-		
-	});
-	
-	// [중복검사] 버튼에 클릭 이벤트
-	function chkId1(){
-		var memId = $("#memId").val();
-		
-		// 빈 값 확인     
-		if(isEmpty(memId)) {
-			alert("ID 값이 입력되지 않았습니다.");
-			$("#memId").focus();
-			$("#spMemId").show();
-			return;
-		}
-		
-		// 유효성 검사 - 영어소문자와 숫자로 구성. 3글자 이상 10글자 이하 
-		var regExp = /^[a-z0-9]{3,10}$/;
-		if(!regExp.test(memId)) {
-			alert("ID 값이 유효하지 않습니다.");
-			$("#memId").focus();
-			$("#spMemId").show();
-			return;
-		}
-		
-		// DB에서 중복검사 수행
-		$.ajax({
-			url : "/JqueryPro/MemberServlet"
-			,type : "post"
-			,data : {"memId" : memId, "flag" : "CHKID"}
-			,dataType : "json"
-			,success : function(data){
-				console.log(data);
-			}
-			,error : function(xhr){
-				console.log(xhr);
-				alert("ID 중복 검사 중 오류가 발생했습니다.");
-			}
-				
-		});
-		
-	}
-	
 	</script>
 	
 	
@@ -244,7 +165,7 @@
 				<label class="control-label col-sm-2" for="recvEmail">광고메일</label>
 				<div class="col-sm-10">
 					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="Y" checked>수신</label>
-					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="N" >미수신</label>
+					<label class="radio-inline"><input type="radio" name="recvEmailYn" value="N" id="recvEmailYnN" >미수신</label>
 				</div>
 <!-- 				<label class="control-label col-sm-2" for="memJob">직업</label> -->
 <!-- 				<div class="col-sm-4"> -->
@@ -255,6 +176,9 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="hobby">취미</label>
 				<div class="col-sm-10" id="divHobby">
+					<label class="checkbox-inline">
+						<input type="checkbox" value="02">수영
+					</label>
 				</div>
 			    <input type="hidden" name="memLike" id="memLike">
 			</div>
