@@ -2,6 +2,7 @@ package kr.or.ddit.common.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,8 +31,17 @@ public class ZipServlet extends HttpServlet {
 		try {
 			
 			ZipService zipService = new ZipService();
-	//		zipService.retrieveZipList(groupZip);
-			List<ZipVO> list = zipService.retrieveSidoList();
+			List<ZipVO> list = new ArrayList<ZipVO>();
+			String flag = req.getParameter("flag");
+			
+			if("GU".equals(flag)) {
+				ZipVO zipVo = new ZipVO();
+				zipVo.setSido(req.getParameter("sido"));
+				list = zipService.retrieveGugunList(zipVo);
+			} else {
+				list = zipService.retrieveSidoList();
+				
+			}
 			
 			req.setAttribute("list", list);
 			

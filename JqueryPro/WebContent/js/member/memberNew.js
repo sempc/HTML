@@ -16,7 +16,7 @@ $(document).ready(function(){
 	initHobbyCheck();
 	
 	// 5. '우편번호찾기 화면-시' 세팅
-//	initCitySelect();
+	initCitySelect();
 	
 });
 
@@ -65,7 +65,7 @@ function initCitySelect(){
 		,dataType : "json"
 		,success : function(data){
 			console.log(data);
-//			makeCitySelect(data);
+			makeCitySelect(data);
 		}
 		,error : function(xhr){
 			console.log(xhr);
@@ -85,11 +85,42 @@ function makeJobSelect(data){
 }
 
 function makeMemorialSelect(data){
-	var strHtml = "";
+	var strHtml = '<option value="">선택하세요</option>';
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
 	}
 	$("#memMemorial").html(strHtml);
+	
+}
+
+function makeCitySelect(data){
+	var strHtml = "";
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].sido +'">' + data[i].sido + '</option>';
+	}
+	$("#city").html(strHtml);
+}
+
+function setGu(){
+	var param = {
+			'sido' : $("#city").val()
+			,'flag' : 'GU'
+			};
+	
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+			console.log(data);
+			makeCitySelect(data);
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
 	
 }
 
