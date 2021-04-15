@@ -64,11 +64,20 @@ function makeTable(data){
 
 
 function goMemberNew() {
-// 	window.location.href = "/html/member/memberNew.jsp";
+	// 페이지이동1
+// 	window.location.href = "/JqueryPro/html/member/memberNew.jsp";
 	
+ 	// 페이지이동2
+//	var fm = document.getElementById("tmpFm");
+//	fm.method = "post";
+//	fm.action = "/JqueryPro/html/member/memberNew.jsp";
+//	fm.submit();
+ 	
+	// 페이지이동3
 	$("#targetUrl").val("/html/member/memberNew.jsp");
 	var fm = document.getElementById("tmpFm");
 	fm.method = "post";
 	fm.action = "/JqueryPro/PageServlet";
 	fm.submit();
+	
 }
