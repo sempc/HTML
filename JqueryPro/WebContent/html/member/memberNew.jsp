@@ -8,65 +8,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/JqueryPro/css/newcss.css">
 	<!-- JS -->
 	<script src="/JqueryPro/js/jquery-3.6.0.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/JqueryPro/js/common/dditUtils.js?v=1"></script>
+	<script type="text/javascript" src="/JqueryPro/js/common/myutils.js?v=1"></script>
 	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js"></script>
-<!--     <script type="text/javascript" src="../../js/lib/moment.min.js"></script> -->
-<!--     <script type="text/javascript" src="../../js/lib/daterangepicker.js"></script> -->
-<!--     <script type="text/javascript" src="../../js/comm/ui.js"></script> -->
-
-	<link rel="stylesheet" href="/JqueryPro/js/lib/jquery-ui.css">
-<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
-<!--   <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-	<script src="/JqueryPro/js/lib/jquery-ui.js"></script>
-	<script src="/JqueryPro/js/lib/datepicker-ko.js"></script>
-	
-	
-	<style type="text/css">
-	body {background-color: #eaf0f7;color: #50649c;}
-	.container .form-horizontal .form-group:first-child {
-/* 		border-top: 1px solid; */
-		border-top: 1px solid rgb(80, 100, 156, .3);
-		border-left: 1px solid rgb(80, 100, 156, .3);
-		border-right: 1px solid rgb(80, 100, 156, .3);
-	}
-	.container .form-horizontal .form-group {
-/* 		border-bottom: 1px solid; */
-		border-bottom: 1px solid rgb(80, 100, 156, .3);
-		border-left: 1px solid rgb(80, 100, 156, .3);
-		border-right: 1px solid rgb(80, 100, 156, .3);
-		padding: 5px 0px;
-		margin: 0 -15px;
-		background-color: #f1f5fa;
-	    
-	    display: flex;
-	    align-items: center;
-	}
-	.container .form-horizontal .form-group .control-label {}
-	.form-button {padding: 10px 0px;}
-	.form-inline .form-inline-zip1 {width: 90px;}
-	.form-inline .form-inline-zip2 {width: calc(100% - 90px - 54px);}
-	.form-group-inner-down{width: 100%; margin-top: 5px;}
-	.form-group-inner-down .form-control{width: 100%}
-	.form-control1{width: 50%;}
-	.form-control {padding-left: 16px;}
-/* 	.form-control:required {background:#fff url(../../images/bg-required.png) no-repeat left 7px center} */
-	.form-control:disabled, .form-control[readonly] {background: #f2f5fa;}
-	
-	
-	.form-control.singleDate {min-width:125px;padding-right:25px;background:#fff url(/JqueryPro/images/ico-date.png) no-repeat right 7px center}
-/* 	.form-control.singleDate:required {background:#fff url(../../images/bg-required.png) no-repeat left 7px center, url(../../images/ico-date.png) no-repeat right 5px center} */
-
-	.form-group label.required {background: url(/JqueryPro/images/bg-required.png) no-repeat right 5px center}
-	
-	</style>
-	
-	<script type="text/javascript">
-	</script>
-	
-	
 </head>
 <body>
 	<!-- 본문영역 시작 -->

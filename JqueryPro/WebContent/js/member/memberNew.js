@@ -266,10 +266,3 @@ function chkId1(){
 	});
 	
 }
-
-//function openZip() {
-//	initSidoSelect();
-//	$("#divZipResult").hide();
-//	$("#tbZipResult tbody").empty();
-//	$("#zipModal").modal();
-//}

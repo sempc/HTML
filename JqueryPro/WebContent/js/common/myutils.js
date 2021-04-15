@@ -39,6 +39,11 @@ function isEmpty(val) {
 	return false;
 }
 
+function changeEmptyVal(val) {
+	if(isEmpty(val)) return "";
+	else return val;
+}
+
 /** 핸드폰 번호 포맷 */
 function formatHp(val){
 	//val : 01012341234, 010-1234-1234, 010-12341234, 0101234-1234
