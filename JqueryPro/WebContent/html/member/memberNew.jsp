@@ -208,16 +208,12 @@
 				</div>
 				<div class="modal-body">
 					시: <select id="city" onchange="setGu()">
-<!-- 						<option value="">선택하세요</option> -->
-<!-- 						<option value="대전">대전</option> -->
-<!-- 						<option value="세종">세종</option> -->
-<!-- 						<option value="충남">충남</option> -->
 					</select>
 					구: <select id="gu" onchange="setDong()" disabled="disabled">
-						<option>선택하세요</option>
+						<option value="">선택하세요</option>
 					</select>
 					동: <select id="dong" disabled="disabled">
-						<option>선택하세요</option>
+						<option value="">선택하세요</option>
 					</select>
 					<button type="button" onclick="searchZipCode()" id="btnZip">검색</button>
 					<hr>

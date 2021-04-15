@@ -28,7 +28,7 @@ function initJobSelect(){
 		,data : {"groupCode" : 'A02'} // 직업코드 조회
 		,dataType : "json"
 		,success : function(data){
-			console.log(data);
+//			console.log(data);
 			makeJobSelect(data);
 		}
 		,error : function(xhr){
@@ -45,7 +45,7 @@ function initMemorialSelect(){
 		,data : {"groupCode" : 'A03'} // 직업코드 조회
 		,dataType : "json"
 		,success : function(data){
-			console.log(data);
+//			console.log(data);
 			makeMemorialSelect(data);
 		}
 		,error : function(xhr){
@@ -58,13 +58,17 @@ function initHobbyCheck(){
 	
 }
 function initCitySelect(){
+	var param = {
+			'flag' : 'SI'
+	};
+	
 	$.ajax({
 		url : "/JqueryPro/ZipServlet"
 		,type : "post"
-//		,data : {"groupCode" : 'A02'} // 직업코드 조회
+		,data : param
 		,dataType : "json"
 		,success : function(data){
-			console.log(data);
+//			console.log(data);
 			makeCitySelect(data);
 		}
 		,error : function(xhr){
@@ -85,7 +89,7 @@ function makeJobSelect(data){
 }
 
 function makeMemorialSelect(data){
-	var strHtml = '<option value="">선택하세요</option>';
+	var strHtml = "";
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
 	}
@@ -94,18 +98,25 @@ function makeMemorialSelect(data){
 }
 
 function makeCitySelect(data){
-	var strHtml = "";
+	// 방법1)
+	var strHtml = '<option value="">선택하세요</option>';
+//	var strHtml = '';
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].sido +'">' + data[i].sido + '</option>';
 	}
 	$("#city").html(strHtml);
+	
+	// 방법2)
+//	setGu();
+	// 방법3)
+	//trigger로 change 이벤트 호출
 }
 
 function setGu(){
 	var param = {
 			'sido' : $("#city").val()
 			,'flag' : 'GU'
-			};
+	};
 	
 	$.ajax({
 		url : "/JqueryPro/ZipServlet"
@@ -113,8 +124,9 @@ function setGu(){
 		,data : param
 		,dataType : "json"
 		,success : function(data){
-			console.log(data);
-			makeCitySelect(data);
+//			console.log(data);
+			makeGugunSelect(data);
+			
 		}
 		,error : function(xhr){
 			console.log(xhr);
@@ -124,6 +136,97 @@ function setGu(){
 	
 }
 
+function makeGugunSelect(data){
+	var strHtml = '<option value="">선택하세요</option>';
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].gugun +'">' + data[i].gugun + '</option>';
+	}
+	$("#gu").html(strHtml);
+	$("#gu").prop("disabled", false);
+}
+
+function setDong(){
+	var param = {
+			'sido' : $("#city").val()
+			,'gugun' : $("#gu").val()
+			,'flag' : 'DONG'
+	};
+	
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+//			console.log(data);
+			makeDongSelect(data);
+			
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
+	
+}
+function makeDongSelect(data){
+	var strHtml = '<option value="">선택하세요</option>';
+	for(var i=0 ; i<data.length ; i++){
+		strHtml += '<option value="' + data[i].dong +'">' + data[i].dong + '</option>';
+	}
+	$("#dong").html(strHtml);
+	$("#dong").prop("disabled", false);
+}
+
+function searchZipCode(){
+	var sido = $("#city").val();
+	var gu = $("#gu").val();
+	var dong= $("#dong").val();
+	
+	if(isEmpty(sido) || isEmpty(gu) || isEmpty(dong)) {
+		alert("시, 구, 동을 선택하고 검색 버튼을 누르세요.");
+		return;
+	}
+	
+	var param = {
+			'sido' : sido
+			,'gugun' : gu
+			,'dong' : dong
+	};
+	
+	$.ajax({
+		url : "/JqueryPro/ZipServlet"
+		,type : "post"
+		,data : param
+		,dataType : "json"
+		,success : function(data){
+//			console.log(data);
+			makeZipTable(data);
+		}
+		,error : function(xhr){
+			console.log(xhr);
+			alert("오류");
+		}
+	});
+	
+}
+function makeZipTable(data){
+	$("#divZipResult").show();
+	$("#tbZipResult tbody").empty();
+	
+	var strHtml = "";
+	for(var i=0 ; i<data.length ; i++) {
+		strHtml += "<tr>"
+				+ "<td>" + data[i].zipcode + "</td>"
+				+ "<td>" + data[i].sido + " "
+				+ data[i].gugun + " "
+				+ data[i].dong + " " 
+				+ changeEmptyVal(data[i].bunji) + "</td>"
+				+ "</tr>";
+	}
+	
+	$("#tbZipResult tbody").html(strHtml);
+}
 
 // [중복검사] 버튼에 클릭 이벤트
 function chkId1(){
@@ -153,7 +256,7 @@ function chkId1(){
 		,data : {"memId" : memId, "flag" : "CHKID"}
 		,dataType : "json"
 		,success : function(data){
-			console.log(data);
+//			console.log(data);
 		}
 		,error : function(xhr){
 			console.log(xhr);
