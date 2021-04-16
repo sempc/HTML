@@ -89,6 +89,7 @@
 <!-- 					<button type="button" class="btn btn-info btn-sm"
 					 data-toggle="modal" data-target="#zipModal">검색</button> -->
 					<button type="button" class="btn btn-info btn-sm" onclick="openZip()">검색</button>
+					<button type="button" class="btn btn-info btn-sm" onclick="openZipPopup()">검색(팝업)</button>
 					
 					<input type="text" class="form-control form-inline-zip2" id="memAdd1" name="memAdd1" readonly="readonly" required>
 					<br>
@@ -159,20 +160,23 @@
 					<h5 class="modal-title">주소 검색</h5>
 				</div>
 				<div class="modal-body">
-					시: <select id="city" onchange="setGu()">
+					시:
+					<select id="city" onchange="setGu()">
 					</select>
-					구: <select id="gu" onchange="setDong()" disabled="disabled">
+					&nbsp;구:
+					<select id="gu" onchange="setDong()" disabled="disabled">
 						<option value="">선택하세요</option>
 					</select>
-					동: <select id="dong" disabled="disabled">
+					&nbsp;동:
+					<select id="dong" disabled="disabled">
 						<option value="">선택하세요</option>
 					</select>
 					<button type="button" onclick="searchZipCode()" id="btnZip">검색</button>
 					<hr>
-					<div id="divZipResult" style="display: none;">
+					<div id="divZipResult">
 						<table class="table table-striped" id="tbZipResult">
 						  <thead>
-						    <tr onclick="">
+						    <tr>
 						      <th>우편번호</th>
 						      <th>주소</th>
 						    </tr>

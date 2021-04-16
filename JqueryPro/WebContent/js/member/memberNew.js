@@ -378,4 +378,7 @@ function validate(){
 	return true;
 }
 
+function openZipPopup(){
+	window.open("/JqueryPro/html/common/searchZipPopup.html");
+}
 
