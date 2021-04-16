@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.vo.MemberVO;
+
 
 @WebServlet("/MemberServlet")
 public class MemberServlet extends HttpServlet {
@@ -60,7 +63,7 @@ public class MemberServlet extends HttpServlet {
 				disp.forward(req, resp);
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -75,16 +78,18 @@ public class MemberServlet extends HttpServlet {
 		return memberVo;
 	}
 
-	private void createMember(HttpServletRequest req) throws SQLException {
-		// TODO Auto-generated method stub
-		String memId = req.getParameter("memId");
-		String memName = req.getParameter("memName");
-		// 그외 정보들...
-
+	private void createMember(HttpServletRequest req) throws Exception {
+		// 기존 방법
+//		String memId = req.getParameter("memId");
+//		String memName = req.getParameter("memName");
+//		// 그외 정보들...
+//		MemberVO memberVo = new MemberVO();
+//		memberVo.setMemId(memId);
+//		memberVo.setMemName(memName);
+//		// 그 외 정보들 VO에 세팅...
+		
 		MemberVO memberVo = new MemberVO();
-		memberVo.setMemId(memId);
-		memberVo.setMemName(memName);
-		// 그 외 정보들 VO에 세팅...
+		BeanUtils.populate(memberVo, req.getParameterMap());
 		
 		MemberService service = new MemberService();
 		service.createMember(memberVo);

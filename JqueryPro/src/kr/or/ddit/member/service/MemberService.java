@@ -27,6 +27,11 @@ public class MemberService {
 	}
 	
 	public void createMember(MemberVO memberVo) throws SQLException {
+		String memHp = memberVo.getMemHp().replaceAll("-", "");
+		memberVo.setMemHp(memHp);
+		
+		//
+		
 		// TODO Auto-generated method stub
 		// 1. 등록 전 유효성 체크
 		//  1) 중복된 ID인지 체크

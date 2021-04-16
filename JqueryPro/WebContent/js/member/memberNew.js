@@ -342,18 +342,34 @@ function save(){
 		,data : $("#fm").serialize()
 		,dataType : "json"
 		,success : function(data){
+			alert("저장되었습니다.");
 			
+			//페이지 이동
+//			changePage();
 		}
 		,error : function(xhr){
+			alert("실패하였습니다.\n관리자에게 문의하세요.");
 			console.log(xhr);
 		}
 	});
 	
 }
 
+function changePage(){
+	// 방법1
+//	window.location.href = "/JqueryPro/html/member/memberList2.html";
+	
+	// 방법2
+	var fm = document.getElementById("fm");
+	fm.action = "/JqueryPro/html/member/memberList2.html";// 서블릿을 호출하기도 함
+	fm.method = "post";
+	fm.submit();
+	
+}
+
 function validate(){
 	//....
-	return false;
+//	return false;
 	
 	// 체크가 끝나면
 	return true;
