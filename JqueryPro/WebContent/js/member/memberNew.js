@@ -18,6 +18,28 @@ $(document).ready(function(){
 	// 5. '우편번호찾기 화면-시' 세팅
 	initCitySelect();
 	
+//	$("#tbZipResult tbody").dblclick(function(){
+//	});
+//	$("#tbZipResult tbody tr").on("dblclick", function(){
+//	});
+	$("#tbZipResult").on("dblclick", "tbody tr", function(){
+//		this ==> tr
+//		console.log($(this));
+//		console.log($(this).children());
+		
+		var zipcode = $(this).children("td:eq(0)").text();
+		var addr = $(this).children("td:eq(1)").text();
+		
+//		console.log(zipcode);
+//		console.log(addr);
+		
+		// 메인화면(부모창)의 우편번호, 주소 input에 데이터 세팅
+		$("#memZip").val(zipcode);
+		$("#memAdd1").val(addr);
+		
+	});
+		
+	
 });
 
 function initJobSelect(){
@@ -216,6 +238,9 @@ function makeZipTable(data){
 	
 	var strHtml = "";
 	for(var i=0 ; i<data.length ; i++) {
+		console.log(data[i]);
+		//          <tr onclick='fntest( "300-801", "대전", "중구", "문화1동", "1번지" );'>
+//		strHtml += "<tr onclick='fntest( \"" + data[i].zipcode + "\", \"" + data[i].sido + "\");'>" // "300-801"
 		strHtml += "<tr>"
 				+ "<td>" + data[i].zipcode + "</td>"
 				+ "<td>" + data[i].sido + " "
@@ -226,7 +251,19 @@ function makeZipTable(data){
 	}
 	
 	$("#tbZipResult tbody").html(strHtml);
+	
+//	$("#tbZipResult tbody").dblclick();
+	
 }
+
+function fntest1(str1){
+	console.log(str1);
+}
+function fntest(str1, str2){
+	console.log(str1);
+	console.log(str2);
+}
+
 
 // [중복검사] 버튼에 클릭 이벤트
 function chkId1(){

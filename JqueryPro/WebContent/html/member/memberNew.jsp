@@ -13,7 +13,7 @@
 	<script src="/JqueryPro/js/jquery-3.6.0.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/JqueryPro/js/common/myutils.js?v=1"></script>
-	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js"></script>
+	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js?v=1"></script>
 </head>
 <body>
 	<!-- 본문영역 시작 -->

@@ -74,10 +74,12 @@ function goMemberNew() {
 //	fm.submit();
  	
 	// 페이지이동3
-	$("#targetUrl").val("/html/member/memberNew.jsp");
-	var fm = document.getElementById("tmpFm");
-	fm.method = "post";
-	fm.action = "/JqueryPro/PageServlet";
-	fm.submit();
+//	$("#targetUrl").val("/html/member/memberNew.jsp");
+//	var fm = document.getElementById("tmpFm");
+//	fm.method = "post";
+//	fm.action = "/JqueryPro/PageServlet";
+//	fm.submit();
 	
+	// 팝업
+	window.open("/JqueryPro/html/member/memberNew.jsp");
 }
