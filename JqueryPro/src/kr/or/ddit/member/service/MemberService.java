@@ -30,6 +30,8 @@ public class MemberService {
 		String memHp = memberVo.getMemHp().replaceAll("-", "");
 		memberVo.setMemHp(memHp);
 		
+		memberVo.setMemZip(memberVo.getMemZip().replaceAll("-", ""));
+		
 		//
 		
 		// TODO Auto-generated method stub
