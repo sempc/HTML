@@ -40,7 +40,6 @@ public class MemberServlet extends HttpServlet {
 			} else if("C".equals(flag)) { // 등록
 				createMember(req);
 				
-				
 			} else if("R".equals(flag)) { // 단건 조회
 				
 			} else if("U".equals(flag)) { // 수정

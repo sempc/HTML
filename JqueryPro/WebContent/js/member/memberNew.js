@@ -37,9 +37,11 @@ $(document).ready(function(){
 		$("#memZip").val(zipcode);
 		$("#memAdd1").val(addr);
 		
+		// 주소창(모달창) 닫기
+		$("#zipModal").modal("hide");
+		
 	});
 		
-	
 });
 
 function initJobSelect(){
@@ -102,7 +104,7 @@ function initCitySelect(){
 
 
 function makeJobSelect(data){
-	var strHtml = "";
+	var strHtml = '<option value="">선택하세요</option>';
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
 	}
@@ -111,7 +113,7 @@ function makeJobSelect(data){
 }
 
 function makeMemorialSelect(data){
-	var strHtml = "";
+	var strHtml = '<option value="">선택하세요</option>';
 	for(var i=0 ; i<data.length ; i++){
 		strHtml += '<option value="' + data[i].value +'">' + data[i].name + '</option>';
 	}
@@ -128,8 +130,11 @@ function makeCitySelect(data){
 	}
 	$("#city").html(strHtml);
 	
+	setGu();
+	
 	// 방법2)
 //	setGu();
+	
 	// 방법3)
 	//trigger로 change 이벤트 호출
 }
@@ -165,6 +170,8 @@ function makeGugunSelect(data){
 	}
 	$("#gu").html(strHtml);
 	$("#gu").prop("disabled", false);
+	
+	setDong();
 }
 
 function setDong(){
@@ -303,3 +310,53 @@ function chkId1(){
 	});
 	
 }
+
+function openZip(){
+	// 시 셀렉트박스 조회하고 초기화
+	initCitySelect();
+	// 테이블 초기화
+	$("#tbZipResult tbody").empty();
+	
+	// 주소창(모달창) 열기 - 부트스트랩의 modal 메소드 호출
+	$("#zipModal").modal();
+}
+
+// 회원정보 저장하기
+function save(){
+	// 회원정보 유효성 체크
+	var result = validate();
+	if(!result) {
+		return;
+	}
+	
+	// 사용자 컨펌
+	if(!confirm("저장하시겠습니까?")) {
+		return;
+	}
+	
+	// DB에 저장하는 ajax 호출
+	$("#formFlag").val("C");
+	$.ajax({
+		url : "/JqueryPro/MemberServlet"
+		,type : "post"
+		,data : $("#fm").serialize()
+		,dataType : "json"
+		,success : function(data){
+			
+		}
+		,error : function(xhr){
+			console.log(xhr);
+		}
+	});
+	
+}
+
+function validate(){
+	//....
+	return false;
+	
+	// 체크가 끝나면
+	return true;
+}
+
+

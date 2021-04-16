@@ -46,7 +46,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2 required" for="memPass">비밀번호 확인</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control form-control1" id="memPass1" placeholder="비밀번호를 입력하세요" name="memPass" required>
+					<input type="password" class="form-control form-control1" id="memPass1" placeholder="비밀번호를 입력하세요" name="memPass1" required>
 					<span id="spMemPass1" style="display: none;">비밀번호가 일치하지 않습니다.</span>
 				</div>
 			</div>
@@ -85,8 +85,11 @@
 				<label class="control-label col-sm-2 required" for="memId">주소</label>
 				<div class="col-sm-10 form-inline">
 					<input type="text" class="form-control form-inline-zip1" id="memZip" name="memZip" readonly="readonly" required>
-					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#zipModal">검색</button>
-<!-- 					<button type="button" class="btn btn-info btn-sm" id="btnAddr" onclick="openZip()">검색</button> -->
+					
+<!-- 					<button type="button" class="btn btn-info btn-sm"
+					 data-toggle="modal" data-target="#zipModal">검색</button> -->
+					<button type="button" class="btn btn-info btn-sm" onclick="openZip()">검색</button>
+					
 					<input type="text" class="form-control form-inline-zip2" id="memAdd1" name="memAdd1" readonly="readonly" required>
 					<br>
 					<div class="form-group-inner-down">
@@ -136,8 +139,10 @@
 					<textarea class="form-control" rows="5" id="memComment" name="memComment" maxlength="1000"></textarea>
 				</div>
 			</div>
-			<input type="hidden" name="action" id="actionFm">
+<!-- 			<input type="hidden" name="action" id="actionFm"> -->
+			<input type="hidden" name="flag" id="formFlag">
 		</form>
+		
 		<div class="form-button text-center">
 			<button type="button" class="btn btn-primary" onclick="save()">저장</button>
 			<button type="button" class="btn btn-default" onclick="goList()">취소</button>
@@ -167,7 +172,7 @@
 					<div id="divZipResult" style="display: none;">
 						<table class="table table-striped" id="tbZipResult">
 						  <thead>
-						    <tr>
+						    <tr onclick="">
 						      <th>우편번호</th>
 						      <th>주소</th>
 						    </tr>
