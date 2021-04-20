@@ -1,6 +1,12 @@
 package kr.or.ddit.member.vo;
 
-public class MemberVO {
+import kr.or.ddit.base.vo.BaseVO;
+import kr.or.ddit.common.vo.CodeVO;
+
+public class MemberVO extends BaseVO {
+	
+	private String loginId;
+	
 	private String memId;
 	private String memPass;
 	private String memName;

@@ -201,6 +201,8 @@ public class MemberServlet extends HttpServlet {
 			MemberService service = new MemberService();
 			List<MemberVO> list = service.retrieveMemberList(memberVo);
 			
+			memberVo.setMemDelete(MemberVO.N);
+			
 			/** Gson 적용 부분 **********************************/
 			Gson gson = new Gson();
 			String strJson =  gson.toJson(list);
@@ -210,8 +212,8 @@ public class MemberServlet extends HttpServlet {
 			
 			PrintWriter out = resp.getWriter();
 			out.print(strJson);
-			out.flush();
-			out.close();
+//			out.flush();
+//			out.close();
 			/*************************************************/
 			
 		} catch (Exception e) {

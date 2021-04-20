@@ -57,7 +57,7 @@
              , MEM_HP                memHp             
              , MEM_MAIL              memMail           
              , RECV_EMAIL_YN         recvEmailYn      
-             , MEM_JOB               memJob      
+             , MEM_JOB               memJob
 		FROM TB_MEMBER
 		WHERE MEM_ID = #memId#
 	</select>
