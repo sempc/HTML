@@ -3,17 +3,16 @@
  */
 const ROOT = "/MemberPro";
 function movePage1(url){
+	// 페이지이동1
  	location.href = ROOT + "/PageServlet?targetUrl=" + url;
+// 	location.href = "/member/memberNew.do";
 // 	location.href = "~.do";
 }
 function movePage2(url){
-	// 페이지이동1
-// 	location.href = "/member/memberNew.do";
-	
  	// 페이지이동2
-	var fm = document.getElementById("tmpFm");
+	var fm = document.getElementById("fmPg");
 	fm.method = "post";
-	fm.action = url;
+	fm.action = ROOT + "/PageServlet?targetUrl=" + url;
 	fm.submit();
  	
 	// 페이지이동3

@@ -9,6 +9,9 @@
 </head>
 <body>
 	<p>회원관리 페이지 입니다.</p>
-	<a href="javascript:movePage1('/member/memberList.jsp');">메뉴로 이동</a>
+	<a href="javascript:movePage2('/member/memberList.jsp');">메뉴로 이동</a>
+	<form id="fmPg">
+		<input type="hidden" name="targetUrl">
+	</form>
 </body>
 </html>
