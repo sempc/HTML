@@ -1,9 +1,9 @@
 package kr.or.ddit.member.vo;
 
-import kr.or.ddit.base.vo.BaseVO;
+import kr.or.ddit.base.vo.ConstVO;
 import kr.or.ddit.common.vo.CodeVO;
 
-public class MemberVO extends BaseVO {
+public class MemberVO extends ConstVO {
 	
 	private String loginId;
 	

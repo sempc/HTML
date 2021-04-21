@@ -64,9 +64,7 @@ function makeTable(data){
 
 
 function goMemberNew() {
-	// 페이지이동1
-// 	location.href = "/JqueryPro/html/member/memberNew.jsp";
-	
+	movePage2();
  	// 페이지이동2
 //	var fm = document.getElementById("tmpFm");
 //	fm.method = "post";
@@ -81,5 +79,5 @@ function goMemberNew() {
 //	fm.submit();
 	
 	// 팝업
-	window.open("/JqueryPro/html/member/memberNew.jsp");
+//	window.open("/JqueryPro/html/member/memberNew.jsp");
 }

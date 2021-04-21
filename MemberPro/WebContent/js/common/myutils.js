@@ -4,23 +4,49 @@
 const ROOT = "/MemberPro";
 function movePage1(url){
 	// 페이지이동1
- 	location.href = ROOT + "/PageServlet?targetUrl=" + url;
+// 	location.href = ROOT + "/PageServlet?targetUrl=" + url;
 // 	location.href = "/member/memberNew.do";
 // 	location.href = "~.do";
-}
-function movePage2(url){
- 	// 페이지이동2
-	var fm = document.getElementById("fmPg");
+
+ 	var fm = document.getElementById("fmPg");
 	fm.method = "post";
 	fm.action = ROOT + "/PageServlet?targetUrl=" + url;
 	fm.submit();
+
+}
+function movePage2(url){
+	console.log(">>>>>>>>>>movePage2");
+	
+ 	// form submit을 수행하기 위해 form이 없는 경우 form을 생성해서 body에 추가함
+	var fm = document.getElementById("fmPg");
+	if(isEmpty(fm)) {
+		fm = document.createElement("form");
+		fm.id = "fmPg";
+		document.body.append(fm);
+	}
+	
+	// url이 없는 경우 form에 hidden으로 'targetUrl'이 있다고 가정
+	if(isEmpty(url)){
+		var obj = $("[name=targetUrl]", fm);
+		if(isEmpty(obj)){
+			alert('이동할 페이지 정보가 없습니다.');
+			return;
+		}
+		
+	} else {
+		var obj = $("[name=targetUrl]", fm);
+		if(isEmpty(obj)){
+			alert('이동할 페이지 정보가 없습니다.');
+			return;
+		} else {
+			obj.val(url);
+		}
+	}
+	
+	fm.method = "post";
+	fm.action = ROOT + "/PageServlet";
+	fm.submit();
  	
-	// 페이지이동3
-//	$("#targetUrl").val(url);
-//	var fm = document.getElementById("tmpFm");
-//	fm.method = "post";
-//	fm.action = "/JqueryPro/PageServlet";
-//	fm.submit();
 }
 
 function getValue(url, key){

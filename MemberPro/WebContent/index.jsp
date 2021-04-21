@@ -5,13 +5,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	<script src="<%=request.getContextPath()%>/js/jquery-3.6.0.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/myutils.js"></script>
 </head>
 <body>
 	<p>회원관리 페이지 입니다.</p>
-	<a href="javascript:movePage2('/member/memberList.jsp');">메뉴로 이동</a>
+	<a href="javascript:movePage2();">메뉴로 이동</a>
 	<form id="fmPg">
-		<input type="hidden" name="targetUrl">
+		<input type="hidden" name="targetUrl" value="/member/memberList.jsp">
 	</form>
 </body>
 </html>

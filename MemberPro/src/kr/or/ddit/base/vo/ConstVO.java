@@ -1,7 +1,7 @@
 package kr.or.ddit.base.vo;
 
 //ConstVO
-public class BaseVO {
+public class ConstVO {
 
 	public final static String Y = "Y";
 	public final static String N = "N";

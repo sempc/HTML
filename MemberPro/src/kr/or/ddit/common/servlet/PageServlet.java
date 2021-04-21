@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.base.vo.BaseVO;
+import kr.or.ddit.base.vo.ConstVO;
 
 /**
  * Servlet implementation class PageSevlet
@@ -32,9 +32,8 @@ public class PageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String tarUrl = request.getParameter("targetUrl");
 		
-		RequestDispatcher disp = request.getRequestDispatcher(BaseVO.VIEW_ROOT + tarUrl);
+		RequestDispatcher disp = request.getRequestDispatcher(ConstVO.VIEW_ROOT + tarUrl);
 		disp.forward(request, response);
-//		response.sendRedirect(BaseVO.VIEW_ROOT + tarUrl);
 	}
 
 }
