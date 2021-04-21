@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.base.vo.BaseVO;
+
 /**
  * Servlet implementation class PageSevlet
  */
@@ -23,16 +25,16 @@ public class PageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String tarUrl = request.getParameter("targetUrl");
 		
-//		RequestDispatcher disp = req.getRequestDispatcher(req.getContextPath() + tarUrl);
-		RequestDispatcher disp = request.getRequestDispatcher(tarUrl);
+		RequestDispatcher disp = request.getRequestDispatcher(BaseVO.VIEW_ROOT + tarUrl);
 		disp.forward(request, response);
+//		response.sendRedirect(BaseVO.VIEW_ROOT + tarUrl);
 	}
 
 }

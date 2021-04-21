@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>회원 정보 관리</title>
-	<link rel="stylesheet" type="text/css" href="../../css/listcss.css?v=1">
-	<script src="../../js/jquery-3.6.0.js"></script>
-	<script src="../../js/common/myutils.js"></script>
-	<script src="../../js/member/memberList.js?v=1"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/listcss.css?v=1">
+	<script src="<%=request.getContextPath()%>/js/jquery-3.6.0.js"></script>
+	<script src="<%=request.getContextPath()%>/js/common/myutils.js"></script>
+<script src="<%=request.getContextPath()%>/js/member/memberList.js?v=1"></script>
 </head>
 <body>
 	<!-- 본문영역 시작 -->

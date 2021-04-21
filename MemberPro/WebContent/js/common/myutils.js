@@ -1,14 +1,19 @@
 /**
  * 
  */
-function movePage(url, type){
+const ROOT = "/MemberPro";
+function movePage1(url){
+ 	location.href = ROOT + "/PageServlet?targetUrl=" + url;
+// 	location.href = "~.do";
+}
+function movePage2(url){
 	// 페이지이동1
 // 	location.href = "/member/memberNew.do";
 	
  	// 페이지이동2
 	var fm = document.getElementById("tmpFm");
 	fm.method = "post";
-	fm.action = "/member/memberNew.do";
+	fm.action = url;
 	fm.submit();
  	
 	// 페이지이동3
