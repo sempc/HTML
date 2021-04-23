@@ -21,7 +21,9 @@ function movePage2(url){
 	
  	// form submit을 수행하기 위해 form이 없는 경우 form을 생성해서 body에 추가함
 	var fm = document.getElementById("fmPg");
+	console.log(fm);
 	if(isEmpty(fm)) {
+		console.log(">>>>>>>>>>fm empty");
 		fm = document.createElement("form");
 		fm.id = "fmPg";
 		document.body.append(fm);
