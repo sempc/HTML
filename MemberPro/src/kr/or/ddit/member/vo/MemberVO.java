@@ -1,11 +1,8 @@
 package kr.or.ddit.member.vo;
 
 import kr.or.ddit.base.vo.ConstVO;
-import kr.or.ddit.common.vo.CodeVO;
 
 public class MemberVO extends ConstVO {
-	
-	private String loginId;
 	
 	private String memId;
 	private String memPass;
