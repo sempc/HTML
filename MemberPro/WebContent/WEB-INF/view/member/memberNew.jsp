@@ -128,9 +128,6 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="hobby">취미</label>
 				<div class="col-sm-10" id="divHobby">
-					<label class="checkbox-inline">
-						<input type="checkbox" value="02">수영
-					</label>
 				</div>
 			    <input type="hidden" name="memLike" id="memLike">
 			</div>
